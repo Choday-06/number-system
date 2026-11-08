@@ -40,7 +40,7 @@
     const typing = addMessage('assistant', 'Thinking through your question…', true);
     const context = history.slice(-10);
     try {
-      const response = await fetch('/api/chat', {
+      const response = await fetch(window.DNS_CHAT_API_URL, {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: clean, history: context })
       });
