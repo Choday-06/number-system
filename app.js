@@ -374,7 +374,7 @@ function loadHistoryDashboard() {
   const listHtml = (items, valueKey, suffix) => items.length ? `<ul class="history-list">${items.map(item=>`<li><span>${labels[item.topic] || item.topic || 'General'}</span><strong>${item[valueKey]} ${suffix}</strong></li>`).join('')}</ul>` : '<p class="empty-note">No activity recorded yet.</p>';
   const refresh = () => {
     status.textContent = 'Loading website activity…'; dashboard.hidden = true;
-    fetch('/api/history').then(r=>{if(!r.ok) throw new Error('Could not load history.'); return r.json();}).then(data=>{
+    fetch(`${window.DNS_HISTORY_API_URL}/api/history`).then(r=>{if(!r.ok) throw new Error('Could not load history.'); return r.json();}).then(data=>{
       const s=data.summary;
       document.getElementById('statVisitors').textContent=s.visitors;
       document.getElementById('statPages').textContent=s.page_views;
