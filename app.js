@@ -362,7 +362,7 @@ function getVisitorId() {
   } catch (_) { return `session-${Date.now()}`; }
 }
 function trackActivity(eventType, page, topic = '', score = null, total = null) {
-  fetch('/api/track', { method:'POST', headers:{'Content-Type':'application/json'}, keepalive:true,
+  fetch(`${window.DNS_HISTORY_API_URL}/api/track`, { method:'POST', headers:{'Content-Type':'application/json'}, keepalive:true,
     body:JSON.stringify({visitor_id:getVisitorId(), event_type:eventType, page, topic, score, total})
   }).catch(() => {});
 }
