@@ -1,57 +1,35 @@
-# Digital Number System Website + AI Study Assistant
+# Digital Number System Website – Free Local Study Assistant
 
-## Start the website and AI assistant (Mac)
+## Run the website on Mac
 
-1. Extract the ZIP and open the extracted folder in VS Code.
-2. Open **Terminal → New Terminal**.
-3. Install the Python packages:
+1. Extract this ZIP file.
+2. Open the extracted folder in VS Code.
+3. In VS Code, choose **Terminal → New Terminal**.
+4. Run:
+
    ```bash
-   python3 -m pip install -r requirements.txt
+   python3 -m http.server 8000
    ```
-4. Make a private environment file by copying the example:
-   ```bash
-   cp .env.example .env
-   ```
-5. Open `.env` in VS Code and replace `your_api_key_here` with your own OpenAI API key. Keep this file private. Never paste the key into `app.js`, `chatbot.js`, `index.html`, or any public repository.
-6. Start the website and backend together:
-   ```bash
-   python3 server.py
-   ```
-7. Open **http://127.0.0.1:8000** in Chrome.
 
-The chatbot requires a valid OpenAI API key and API billing/usage access. ChatGPT subscriptions and API billing are separate. The project does not include an API key. The key stays on the server in `.env`; browser code sends student questions only to the local `/api/chat` endpoint.
+5. Open Chrome and visit **http://localhost:8000**.
 
-## AI assistant features
-- Floating Bhutanese-inspired chat panel available throughout the website.
-- Suggested questions and conversational follow-up context.
-- Step-by-step explanations focused on Binary, Decimal, Octal and Hexadecimal.
-- Mobile-friendly interface, clear chat by refreshing the page, and friendly student-focused guidance.
-- Basic request-length and per-IP rate limits.
+Keep the terminal open while using the website. To stop the local website, press **Control + C** in the terminal.
 
-## Stop the server
-Press **Ctrl + C** in the terminal.
+## Free Study Assistant
 
-## Important
-For public hosting, deploy `server.py` on a secure server, set `OPENAI_API_KEY` as a server environment secret, enable HTTPS, and configure production rate limits. Do not publish the `.env` file. The chatbot has not been live-tested with an API key because no key was supplied.
+The AI Study Assistant has been changed to a local, rule-based educational helper:
+- No OpenAI API key is required.
+- No API credits or payment are required.
+- No Flask server or Python packages are required.
+- The chatbot works offline once the website files are on your computer.
+- It answers common questions about Binary, Decimal, Octal, Hexadecimal, place value, bits and bytes, and selected number conversions.
 
-## Existing website
-The existing navigation, video lessons, detailed notes, PowerPoint reading guide, and 40 topic quiz questions are retained.
+**Important limitation:** This is not a generative AI model like ChatGPT. It uses built-in explanations and programmed patterns. Questions outside its supported topics may receive a request to rephrase or ask about number systems.
 
+## Privacy
 
-## Bhutanese page backgrounds update
+Chat messages are processed in the browser by the local JavaScript file. They are not sent to OpenAI or another AI API.
 
-The Videos, Learning Materials and Quizzes sections now use Bhutanese-inspired
-background images. The existing page layout, content cards, navigation, quizzes,
-videos and AI chatbot functionality have been left in place.
+## Existing website features
 
-The page background is selected automatically when students navigate to one of
-those three sections. The image assets are stored in `assets/`.
-
-## Website History & Analytics
-- A History page is available in the main navigation.
-- It records approximate unique browser visitors, page views, video starts/lesson opens, learning-material page views, quiz attempts and average quiz scores.
-- Activity is stored locally in `website_history.db` (SQLite), created automatically when the Flask server starts.
-- Tracking starts only after this version is installed; previous activity cannot be reconstructed.
-- Unique visitors are approximate and based on a random browser identifier, not names or email addresses.
-- Video play events are counted when native video players start. For embedded Google Drive videos, the dashboard counts opening the lesson page because cross-origin embeds do not expose reliable play events.
-- Before deploying publicly, protect the History page and `/api/history` endpoint with administrator authentication. The included dashboard is intended for local project use and is not password-protected.
+The homepage, navigation, learning materials, videos, conversion calculator, practice activities, progressive quizzes, team information, and history features are retained.

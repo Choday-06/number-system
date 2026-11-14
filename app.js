@@ -211,6 +211,20 @@ menuToggle.addEventListener("click", () => {
 
 // One delegated handler works for all buttons rendered on every page.
 document.addEventListener("click", (event) => {
+  const option = event.target instanceof Element ? event.target.closest("[data-challenge-answer]") : null;
+  if (!option) return;
+  const feedback = document.getElementById("challengeFeedback");
+  if (!feedback) return;
+  document.querySelectorAll(".challenge-option").forEach(button => button.classList.remove("is-correct", "is-wrong"));
+  const correct = option.getAttribute("data-challenge-answer") === "10";
+  option.classList.add(correct ? "is-correct" : "is-wrong");
+  feedback.textContent = correct
+    ? "Correct! 1010₂ = 8 + 0 + 2 + 0 = 10₁₀. Brilliant work!"
+    : "Not quite. Try adding the place values: 8 + 0 + 2 + 0.";
+  feedback.classList.toggle("is-correct-text", correct);
+});
+
+document.addEventListener("click", (event) => {
   const target = event.target instanceof Element ? event.target.closest("[data-route]") : null;
   if (!target) return;
   event.preventDefault();
@@ -219,51 +233,78 @@ document.addEventListener("click", (event) => {
 
 function homePage() {
   return `
-    <section class="hero" aria-label="Bhutan-inspired digital learning banner"></section>
-    <section class="section home-welcome-section">
-      <div class="intro-layout">
-        <div class="info-panel">
-          <span class="eyebrow" style="color:#a87916">Welcome learners</span>
-          <h2>Your journey into the world of numbers begins here</h2>
-          <p>Number systems are the foundation of digital technology. In this learning space, you will explore how information is represented, stored and processed by computers.</p>
-          <p>Choose one of the four number systems below. Each topic card gives you direct access to its video lesson, reading material and quiz.</p>
-          <button class="btn btn-dark" data-route="home">Explore the topics</button>
+    <section class="hero hero-redesign" aria-label="Bhutan-inspired digital learning banner">
+      <div class="hero-content hero-redesign-content">
+        <span class="eyebrow">CLASS IX · DIGITAL TECHNOLOGY & INNOVATION</span>
+        <h1 class="hero-title">Unlock the World of<br><span class="word-rotator" aria-label="Numbers, discovery, possibilities"><span>Numbers</span><span>Discovery</span><span>Possibilities</span><span>Numbers</span></span></h1>
+        <p>Discover how computers understand, store and process information. Learn the four number systems through videos, clear notes and fun challenges.</p>
+        <div class="hero-actions">
+          <button class="btn btn-gold" data-route="learning-materials">Start Learning <span aria-hidden="true">→</span></button>
+          <button class="btn btn-outline" data-route="quizzes">Try a Quiz <span aria-hidden="true">✦</span></button>
         </div>
-        <div class="welcome-video-card">
-          <span class="eyebrow" style="color:#a87916">A message to learners</span>
-          <h2>Welcome to Digital Number Systems</h2>
-          <p>Start your learning journey with this welcome video.</p>
-          <video class="video-player" controls preload="metadata" playsinline>
-            <source src="assets/videos/welcome-video.mp4" type="video/mp4">
-            Your browser does not support this video.
-          </video>
-        </div>
+        <div class="hero-points"><span>▣ Learn concepts</span><span>⇄ Convert numbers</span><span>★ Practise & improve</span></div>
+      </div>
+      <div class="hero-binary-art" aria-hidden="true"><span>0101</span><span>1010</span><span>1101</span><b>01</b></div>
+      <div class="hero-orbit" aria-hidden="true"><i>0</i><i>1</i><i>01</i><i>10</i></div>
+      <div class="hero-floating-code" aria-hidden="true"><span>101101</span><span>010010</span><span>110011</span></div>
+      <div class="hero-scroll-cue" aria-hidden="true"><span></span> SCROLL TO EXPLORE</div>
+    </section>
+
+    <section class="section welcome-redesign">
+      <div class="welcome-copy">
+        <span class="eyebrow" style="color:#a87916">KUZUZANGPO LA!</span>
+        <h2>Your learning adventure starts here.</h2>
+        <p>Number systems are the language behind digital technology. Explore at your own pace, build confidence with worked examples and test what you know through practice.</p>
+        <div class="welcome-mini-stats"><span><strong>4</strong> number systems</span><span><strong>3</strong> ways to learn</span><span><strong>1</strong> learning journey</span></div>
+      </div>
+      <div class="welcome-video-card welcome-video-redesign">
+        <span class="eyebrow" style="color:#a87916">A MESSAGE TO LEARNERS</span>
+        <h2>Welcome to Digital Number Systems</h2>
+        <p>Watch the introduction before you begin.</p>
+        <video class="video-player" controls preload="metadata" playsinline>
+          <source src="assets/videos/welcome-video.mp4" type="video/mp4">
+          Your browser does not support this video.
+        </video>
       </div>
     </section>
-    <section class="feature-strip">
-      <div class="section">
-        <div class="section-heading"><span class="eyebrow" style="color:#a87916">Learn your way</span><h2>One platform, three ways to learn</h2></div>
-        <div class="feature-grid">
-          <div class="feature"><div class="symbol">▶</div><h3>Watch</h3><p>Learn through clear and engaging video lessons.</p></div>
-          <div class="feature"><div class="symbol">▤</div><h3>Read</h3><p>Review explanations, place values and worked examples.</p></div>
-          <div class="feature"><div class="symbol">✎</div><h3>Practise</h3><p>Answer quizzes and receive instant feedback.</p></div>
-        </div>
-      </div>
-    </section>
-    <section class="section">
-      <div class="section-heading"><span class="eyebrow" style="color:#a87916">Begin here</span><h2>Explore Number Systems</h2><p>Select one of the four number systems to begin your learning journey.</p></div>
+
+    <section class="section learning-path-section">
+      <div class="section-heading"><span class="eyebrow" style="color:#a87916">CHOOSE YOUR ADVENTURE</span><h2>Explore the four number systems</h2><p>Each topic includes explanations, worked examples, a video lesson and a quiz.</p></div>
       ${topicCards()}
+    </section>
+
+    <section class="section home-tools-section">
+      <div class="section-heading"><span class="eyebrow" style="color:#a87916">LEARN BY DOING</span><h2>Your learning toolkit</h2><p>Watch, read and practise your way to becoming a number-system expert.</p></div>
+      <div class="home-tools-grid">
+        <button class="home-tool-card" data-route="videos"><span class="home-tool-icon">▶</span><strong>Video lessons</strong><small>See concepts explained step by step</small><span class="tool-link">Explore videos →</span></button>
+        <button class="home-tool-card" data-route="learning-materials"><span class="home-tool-icon">▤</span><strong>Learning materials</strong><small>Review notes, place values and examples</small><span class="tool-link">Read notes →</span></button>
+        <button class="home-tool-card" data-route="quizzes"><span class="home-tool-icon">✦</span><strong>Quiz challenges</strong><small>Check your understanding and improve</small><span class="tool-link">Take a quiz →</span></button>
+      </div>
+    </section>
+
+    <section class="section daily-challenge-section">
+      <div class="daily-challenge">
+        <div><span class="eyebrow">QUICK THINKING CHALLENGE</span><h2>Can you crack this number?</h2><p>What is the decimal value of <strong>1010₂</strong>?</p></div>
+        <div class="challenge-options">
+          <button type="button" class="challenge-option" data-challenge-answer="8">8</button>
+          <button type="button" class="challenge-option" data-challenge-answer="10">10</button>
+          <button type="button" class="challenge-option" data-challenge-answer="12">12</button>
+          <button type="button" class="challenge-option" data-challenge-answer="14">14</button>
+          <p id="challengeFeedback" class="challenge-feedback" aria-live="polite">Choose an answer to check yourself.</p>
+        </div>
+      </div>
     </section>`;
 }
 function topicCards() {
   return `<div class="topic-grid">${Object.entries(topics).map(([key,t],i)=>`
-    <article class="topic-card topic-home-card">
-      <span class="topic-number">TOPIC 0${i+1} · ${t.base.toUpperCase()}</span>
-      <div><h3>${t.name}</h3><p>${t.tagline}</p><p class="topic-description">${t.intro}</p></div>
+    <article class="topic-card topic-home-card topic-card-${key}">
+      <div class="topic-card-top"><span class="topic-number">TOPIC 0${i+1}</span><span class="topic-base">${t.base}</span></div>
+      <div class="topic-card-symbol" aria-hidden="true">${({binary:"01",decimal:"123",octal:"₈",hexadecimal:"A–F"})[key]}</div>
+      <div><h3>${t.name}</h3><p class="topic-tagline">${t.tagline}</p><p class="topic-description">${t.intro}</p></div>
       <div class="topic-card-actions">
-        <button class="btn btn-dark" data-route="videos-${key}">▶ Watch Video</button>
-        <button class="btn btn-outline-dark" data-route="learning-materials-${key}">▤ Read Notes</button>
-        <button class="btn btn-outline-dark" data-route="quizzes-${key}">✎ Start Quiz</button>
+        <button class="btn btn-dark" data-route="videos-${key}">▶ Watch</button>
+        <button class="btn btn-outline-dark" data-route="learning-materials-${key}">▤ Read</button>
+        <button class="btn btn-outline-dark" data-route="quizzes-${key}">✦ Quiz</button>
       </div>
     </article>`).join("")}</div>`;
 }
@@ -302,9 +343,43 @@ function activityPage(key, type, sectionTitle = "") {
       <div class="notes-intro"><h3>Learning objectives</h3><p>After studying this material, you should be able to explain the number system, identify its valid digits, describe place values, and solve basic conversion problems.</p></div>
       ${notes.sections.map(([h,html],i)=>`<article class="detailed-note-section"><span class="reading-index">${String(i+1).padStart(2,"0")}</span><div><h3>${h}</h3>${html}</div></article>`).join("")}
       <div class="example-box"><strong>Remember:</strong> The base tells you how many different digits or symbols are used in a number system. Always check that every digit in a number is valid for its base.</div>
+      <section class="converter-lab" id="conversion-lab">
+        <div class="converter-heading"><span class="eyebrow">TRY IT YOURSELF</span><h2>Number System Conversion Calculator</h2><p>Use this calculator to convert any valid number instantly. Select the original base, select the base you want, enter your number and press Convert Now.</p></div>
+        <div class="converter-panel">
+          <div class="converter-controls">
+            <label>Convert from<select id="convertFrom"><option value="10">Decimal (Base 10)</option><option value="2">Binary (Base 2)</option><option value="8">Octal (Base 8)</option><option value="16">Hexadecimal (Base 16)</option></select></label>
+            <button type="button" class="converter-swap" id="swapBases" aria-label="Swap number systems" title="Swap number systems">⇄</button>
+            <label>Convert to<select id="convertTo"><option value="2">Binary (Base 2)</option><option value="10">Decimal (Base 10)</option><option value="8">Octal (Base 8)</option><option value="16">Hexadecimal (Base 16)</option></select></label>
+          </div>
+          <form id="converterForm" class="converter-form">
+            <label for="convertInput">Enter your number</label>
+            <div class="converter-input-row"><input id="convertInput" type="text" autocomplete="off" spellcheck="false" placeholder="Example: 1011" required><button class="btn btn-gold" type="submit">Convert Now <span aria-hidden="true">→</span></button></div>
+            <p class="converter-hint" id="converterHint">Use only digits 0 and 1 for binary numbers.</p>
+          </form>
+          <div class="converter-result" id="converterResult" aria-live="polite"><div class="converter-result-placeholder"><span>⇄</span><strong>Your answer will appear here</strong><small>Try converting 1011 from binary to decimal.</small></div></div>
+          <div class="converter-examples"><span>QUICK EXAMPLES</span><button type="button" data-convert-example="1011" data-from="2" data-to="10">1011₂ → 11₁₀</button><button type="button" data-convert-example="25" data-from="8" data-to="10">25₈ → 21₁₀</button><button type="button" data-convert-example="2F" data-from="16" data-to="10">2F₁₆ → 47₁₀</button></div>
+        </div>
+      </section>
+
       <section class="practice-section"><span class="eyebrow">CHECK YOUR UNDERSTANDING</span><h2>Practice Questions</h2><p>Try answering each question in your notebook before opening the answer.</p>
       ${notes.practice.map(([q,a],i)=>`<details class="practice-item"><summary><span>Question ${i+1}</span>${q}</summary><div class="practice-answer"><strong>Suggested answer:</strong> ${a}</div></details>`).join("")}
       </section>
+
+
+      <section class="conversion-practice" id="conversion-practice">
+        <div class="conversion-practice-title"><span class="eyebrow">APPLY WHAT YOU LEARNED</span><h2>Conversion Practice</h2><p>Now solve these conversion questions yourself. Type each answer and click <strong>Check Answer</strong> to receive instant feedback.</p></div>
+        <div class="conversion-practice-list">
+          ${({
+            binary:[["Convert 1101₂ to decimal.","13","1101₂ = 1×8 + 1×4 + 0×2 + 1×1 = 13."],["Convert 18₁₀ to binary.","10010","18 ÷ 2 gives remainders 0, 1, 0, 0, 1. Read upwards: 10010₂."],["Convert 25₈ to binary.","10101","Convert each octal digit to 3 binary bits: 2 = 010 and 5 = 101, giving 010101₂ = 10101₂."],["Convert 2F₁₆ to binary.","101111","2 = 0010 and F = 1111 in binary, giving 00101111₂ = 101111₂."]],
+            decimal:[["Convert 25₁₀ to binary.","11001","25 ÷ 2 remainders read upwards give 11001₂."],["Convert 31₁₀ to octal.","37","31 ÷ 8 = 3 remainder 7, so the answer is 37₈."],["Convert 47₁₀ to hexadecimal.","2F","47 ÷ 16 = 2 remainder 15; 15 is F in hexadecimal, so 2F₁₆."],["Convert 101101₂ to decimal.","45","32 + 0 + 8 + 4 + 0 + 1 = 45₁₀."]],
+            octal:[["Convert 17₈ to decimal.","15","1×8 + 7×1 = 15₁₀."],["Convert 25₈ to binary.","10101","2 = 010 and 5 = 101 in 3-bit binary. Remove the leading zero: 10101₂."],["Convert 64₈ to decimal.","52","6×8 + 4 = 52₁₀."],["Convert 2D₁₆ to octal.","55","2D₁₆ = 45₁₀; 45 ÷ 8 gives 5 remainder 5, so 55₈."]],
+            hexadecimal:[["Convert 2F₁₆ to decimal.","47","2×16 + 15 = 47₁₀."],["Convert 101101₂ to hexadecimal.","2D","Group binary digits into fours: 0010 1101 = 2D₁₆."],["Convert 75₁₀ to hexadecimal.","4B","75 ÷ 16 = 4 remainder 11; 11 is B, so 4B₁₆."],["Convert 57₈ to hexadecimal.","2F","57₈ = 47₁₀ = 2F₁₆."]]
+          })[key].map(([q,a,explanation],i)=>`<article class="conversion-practice-card" data-answer="${a}" data-explanation="${explanation}"><div class="conversion-question-label">CONVERSION ${i+1}</div><h3>${q}</h3><div class="conversion-answer-row"><label class="sr-only" for="conversionAnswer${i}">Your answer for question ${i+1}</label><input id="conversionAnswer${i}" type="text" autocomplete="off" spellcheck="false" placeholder="Type your answer"><button type="button" class="btn btn-gold check-conversion-answer">Check Answer</button></div><div class="conversion-feedback" aria-live="polite"></div></article>`).join("")}
+        </div>
+      </section>
+
+
+
       <section class="ppt-resource-card">
         <div class="ppt-resource-icon">▤</div>
         <div class="ppt-resource-copy">
@@ -317,9 +392,20 @@ function activityPage(key, type, sectionTitle = "") {
       </div>`;
   } else {
     body = `<div class="quiz-intro"><span class="quiz-emblem">✦</span><h2>${t.name} Challenge</h2><p>Answer the practice questions below, review your explanations, and then try the interactive game.</p><div class="quiz-perks"><span>✎ ${t.questions.length} practice questions</span><span>✓ Instant score and explanations</span><span>🎮 Interactive game challenge</span></div></div>
-      <form id="quizForm" class="practice-quiz-form">
-        ${t.questions.map((question,index)=>`<article class="quiz-question"><p>${index+1}. ${question.q}</p>${question.o.map((option,optIndex)=>`<label class="quiz-option"><input type="radio" name="q${index}" value="${optIndex}" required> ${option}</label>`).join("")}<div class="quiz-feedback" id="feedback${index}"></div></article>`).join("")}
-        <div class="quiz-controls"><button class="btn btn-dark" type="submit">Submit Answers</button><button class="btn btn-outline-dark" type="reset">Try Again</button></div>
+      <div class="quiz-level-selector" role="group" aria-label="Choose quiz level">
+        <button type="button" class="quiz-level-button is-active" data-quiz-level="beginner"><span>01</span><strong>Beginner</strong><small>Build your basics · 3 questions</small></button>
+        <button type="button" class="quiz-level-button is-locked" data-quiz-level="intermediate" disabled><span>02</span><strong>Intermediate</strong><small>Strengthen your skills · 4 questions</small><em>🔒 Complete Beginner first</em></button>
+        <button type="button" class="quiz-level-button is-locked" data-quiz-level="challenge" disabled><span>03</span><strong>Challenge</strong><small>Test your mastery · 3 questions</small><em>🔒 Complete Intermediate first</em></button>
+      </div>
+      <div class="quiz-learning-guide">
+        <div class="quiz-guide-icon">✦</div><div><strong>How to use this quiz</strong><p>Read each question, choose one answer and check your progress. After submitting, review the explanations to understand why each answer is correct.</p></div>
+      </div>
+      <div class="quiz-progress-wrap"><div class="quiz-progress-top"><span id="quizProgressText">0 of ${t.questions.length} answered</span><span>${t.questions.length} questions</span></div><div class="quiz-progress-track"><span id="quizProgressBar"></span></div></div>
+      <form id="quizForm" class="practice-quiz-form" novalidate>
+        <div class="quiz-question-grid">
+        ${t.questions.map((question,index)=>`<article class="quiz-question" data-quiz-level="${index < 3 ? "beginner" : index < 7 ? "intermediate" : "challenge"}" ${index >= 3 ? "hidden" : ""}><div class="quiz-question-top"><span class="quiz-number">QUESTION ${String(index+1).padStart(2,"0")}</span><span class="quiz-mark">1 POINT</span></div><p>${question.q}</p><div class="quiz-options-grid">${question.o.map((option,optIndex)=>`<label class="quiz-option"><input type="radio" name="q${index}" value="${optIndex}" required><span class="quiz-option-letter">${String.fromCharCode(65+optIndex)}</span><span class="quiz-option-text">${option}</span><span class="quiz-option-check">✓</span></label>`).join("")}</div><div class="quiz-feedback" id="feedback${index}" aria-live="polite"></div></article>`).join("")}
+        </div>
+        <div class="quiz-controls"><button class="btn btn-dark" type="submit">Check My Answers <span aria-hidden="true">→</span></button><button class="btn btn-outline-dark" type="reset">Start Again ↻</button></div>
         <div class="result" id="quizResult" aria-live="polite"></div>
       </form>
       <div class="genially-extra"><h2>Extra interactive game</h2><p>After completing the practice questions, challenge yourself with the topic game.</p><iframe class="genially-frame" src="${t.quizUrl}/embedded" title="${t.name} interactive quiz" allowfullscreen></iframe><p class="empty-note">If the game does not load, <a href="${t.quizUrl}" target="_blank" rel="noopener">open it directly in Genially</a>.</p></div>`;
@@ -327,71 +413,6 @@ function activityPage(key, type, sectionTitle = "") {
   return `<section class="page-banner"><span class="eyebrow">${t.base} · ${t.name}</span><h1>${title}</h1><p>${type === "video" ? "Watch the lesson and use the player controls to pause, replay and move through the video." : type === "reading" ? "Explore the designed learning notes, concepts and worked examples." : "Play the topic game and test what you have learned."}</p></section>
     <div class="breadcrumb"><button data-route="home">Home</button> / ${t.name} / ${title}</div>
     <section class="section"><div class="content-card"><div class="activity-back"><button class="back-arrow" id="returnButton" aria-label="Back to topic options" title="Back to topic options">←</button><span>Back to Home and all topic options</span></div><h2>${title}: ${t.name}</h2>${body}</div></section>`;
-}
-
-function historyPage() {
-  return `<section class="page-banner"><span class="eyebrow">Website activity</span><h1>Learning History & Analytics</h1><p>See how learners are using videos, reading materials and quizzes.</p></section>
-    <section class="section history-section">
-      <div class="history-heading"><div><span class="eyebrow" style="color:#a87916">ADMIN OVERVIEW</span><h2>Website Activity Dashboard</h2><p>Activity is recorded from the day this feature is installed.</p></div><button class="btn btn-dark" id="refreshHistory">↻ Refresh data</button></div>
-      <div id="historyStatus" class="history-status">Loading website activity…</div>
-      <div id="historyDashboard" hidden>
-        <div class="history-stat-grid">
-          <article class="history-stat"><span>Unique visitors</span><strong id="statVisitors">0</strong><small>Browsers / devices seen</small></article>
-          <article class="history-stat"><span>Page views</span><strong id="statPages">0</strong><small>Total page visits</small></article>
-          <article class="history-stat"><span>Video views / starts</span><strong id="statVideos">0</strong><small>Video starts and lesson opens</small></article>
-          <article class="history-stat"><span>Learning material views</span><strong id="statMaterials">0</strong><small>Reading pages opened</small></article>
-          <article class="history-stat"><span>Quiz attempts</span><strong id="statQuizzes">0</strong><small>Submitted practice quizzes</small></article>
-          <article class="history-stat"><span>Average quiz score</span><strong id="statAverage">0%</strong><small>Across submitted quizzes</small></article>
-        </div>
-        <div class="history-grid">
-          <article class="history-panel"><h3>Video activity</h3><div id="videoHistory"></div></article>
-          <article class="history-panel"><h3>Learning materials</h3><div id="materialHistory"></div></article>
-          <article class="history-panel"><h3>Quiz performance</h3><div id="quizHistory"></div></article>
-        </div>
-        <article class="history-panel history-recent"><h3>Recent activity (latest 30 events)</h3><div class="history-table-wrap"><table class="history-table"><thead><tr><th>Activity</th><th>Topic / page</th><th>Result</th><th>Date & time (UTC)</th></tr></thead><tbody id="recentHistory"></tbody></table></div></article>
-      </div>
-      <p class="history-privacy">Privacy note: this dashboard stores a random browser identifier and learning activity only. It does not collect students’ names or email addresses. Unique visitor counts are approximate because clearing browser data or using another device creates a new identifier.</p>
-    </section>`;
-}
-
-function getVisitorId() {
-  try {
-    let id = localStorage.getItem('dns_visitor_id');
-    if (!id) { id = (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : `v-${Date.now()}-${Math.random().toString(16).slice(2)}`; localStorage.setItem('dns_visitor_id', id); }
-    return id;
-  } catch (_) { return `session-${Date.now()}`; }
-}
-function trackActivity(eventType, page, topic = '', score = null, total = null) {
-  fetch(`${window.DNS_HISTORY_API_URL}/api/track`, { method:'POST', headers:{'Content-Type':'application/json'}, keepalive:true,
-    body:JSON.stringify({visitor_id:getVisitorId(), event_type:eventType, page, topic, score, total})
-  }).catch(() => {});
-}
-function loadHistoryDashboard() {
-  const status = document.getElementById('historyStatus');
-  const dashboard = document.getElementById('historyDashboard');
-  if (!status || !dashboard) return;
-  const labels = {binary:'Binary',decimal:'Decimal',octal:'Octal',hexadecimal:'Hexadecimal',introduction:'Introduction',welcome:'Welcome video'};
-  const listHtml = (items, valueKey, suffix) => items.length ? `<ul class="history-list">${items.map(item=>`<li><span>${labels[item.topic] || item.topic || 'General'}</span><strong>${item[valueKey]} ${suffix}</strong></li>`).join('')}</ul>` : '<p class="empty-note">No activity recorded yet.</p>';
-  const refresh = () => {
-    status.textContent = 'Loading website activity…'; dashboard.hidden = true;
-    fetch(`${window.DNS_HISTORY_API_URL}/api/history`).then(r=>{if(!r.ok) throw new Error('Could not load history.'); return r.json();}).then(data=>{
-      const s=data.summary;
-      document.getElementById('statVisitors').textContent=s.visitors;
-      document.getElementById('statPages').textContent=s.page_views;
-      document.getElementById('statVideos').textContent=s.video_plays;
-      document.getElementById('statMaterials').textContent=s.material_views;
-      document.getElementById('statQuizzes').textContent=s.quiz_attempts;
-      document.getElementById('statAverage').textContent=`${s.average_quiz_percent || 0}%`;
-      document.getElementById('videoHistory').innerHTML=listHtml(data.videos,'views','views');
-      document.getElementById('materialHistory').innerHTML=listHtml(data.materials,'views','views');
-      document.getElementById('quizHistory').innerHTML=data.quizzes.length?`<ul class="history-list">${data.quizzes.map(item=>`<li><span>${labels[item.topic]||item.topic}</span><strong>${item.attempts} attempts · ${item.average ?? 0}% avg.</strong></li>`).join('')}</ul>`:'<p class="empty-note">No quiz attempts recorded yet.</p>';
-      const eventLabels={page_view:'Page visit',video_play:'Video started',video_open:'Video lesson opened',learning_material_view:'Learning material opened',quiz_attempt:'Quiz submitted'};
-      document.getElementById('recentHistory').innerHTML=data.recent.length?data.recent.map(item=>`<tr><td>${eventLabels[item.event_type]||item.event_type}</td><td>${labels[item.topic]||item.topic||item.page}</td><td>${item.event_type==='quiz_attempt'?`${item.score}/${item.total}`:'—'}</td><td>${new Date(item.created_at).toLocaleString()}</td></tr>`).join(''):'<tr><td colspan="4">No activity recorded yet. Browse the website and complete a quiz to generate data.</td></tr>';
-      status.textContent='Analytics updated.'; dashboard.hidden=false;
-    }).catch(()=>{status.textContent='Unable to load analytics. Make sure the Flask server is running.';});
-  };
-  refresh();
-  document.getElementById('refreshHistory')?.addEventListener('click',refresh);
 }
 
 function aboutPage() {
@@ -416,21 +437,88 @@ function sectionHubPage(section) {
   return `<section class="page-banner"><span class="eyebrow">Digital Number System</span><h1>${cfg[0]}</h1><p>${cfg[1]}</p></section><section class="section">${intro}${section === "quizzes" ? `<div class="content-card general-quiz"><h2>Number Systems: General Challenge</h2><p>Try this overall quiz to review all four number systems.</p><iframe class="genially-frame" src="https://view.genially.com/6aafc9f536c740f6b5b8b3e2/embedded" title="General number systems quiz" allowfullscreen></iframe></div>` : ""}<div class="section-heading"><h2>Choose a number system</h2></div>${topicCards()}</section>`;
 }
 
+function setupScrollReveals() {
+  const revealTargets = document.querySelectorAll(".welcome-redesign, .section-heading, .topic-home-card, .home-tool-card, .daily-challenge, .content-card, .action-card, .team-card");
+  revealTargets.forEach((element, index) => {
+    element.classList.add("reveal-on-scroll");
+    element.style.setProperty("--reveal-delay", `${(index % 4) * 90}ms`);
+  });
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver((entries, currentObserver) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          currentObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -35px 0px" });
+    revealTargets.forEach(element => observer.observe(element));
+  } else {
+    revealTargets.forEach(element => element.classList.add("is-visible"));
+  }
+}
+
+
+function getLearningHistory() {
+  try { return JSON.parse(localStorage.getItem("dnsLearningHistory") || "[]"); }
+  catch (error) { return []; }
+}
+function saveLearningActivity(activity) {
+  const history = getLearningHistory();
+  history.unshift({ ...activity, date: new Date().toISOString() });
+  localStorage.setItem("dnsLearningHistory", JSON.stringify(history.slice(0, 60)));
+}
+function historyPage() {
+  const history = getLearningHistory();
+  const quizEntries = history.filter(item => item.type === "quiz");
+  const totalAttempts = quizEntries.length;
+  const average = totalAttempts
+    ? Math.round(quizEntries.reduce((sum, item) => sum + (item.percent || 0), 0) / totalAttempts)
+    : 0;
+  const best = totalAttempts ? Math.max(...quizEntries.map(item => item.percent || 0)) : 0;
+  const rows = history.length ? history.map(item => {
+    const date = new Date(item.date);
+    const detail = item.type === "quiz"
+      ? `Quiz completed · ${item.score}/${item.total} correct · ${item.percent}%`
+      : item.detail || "Learning activity";
+    return `<article class="history-entry"><span class="history-entry-icon">${item.type === "quiz" ? "✦" : "✓"}</span><div><strong>${item.title || "Learning activity"}</strong><p>${detail}</p><small>${date.toLocaleString()}</small></div><span class="history-entry-tag">${item.type === "quiz" ? "QUIZ" : "ACTIVITY"}</span></article>`;
+  }).join("") : `<div class="history-empty"><span>༄</span><h3>Your learning journey starts here</h3><p>Complete a lesson or quiz and your recent activity will appear here automatically on this device.</p><button class="btn btn-gold" data-route="learning-materials">Start learning →</button></div>`;
+  return `<section class="page-banner history-banner"><span class="eyebrow">YOUR PERSONAL LEARNING SPACE</span><h1>My Learning History</h1><p>Look back at your practice, celebrate your progress and keep moving forward.</p></section>
+    <section class="section history-section">
+      <div class="history-stats">
+        <div class="history-stat"><span>QUIZ ATTEMPTS</span><strong>${totalAttempts}</strong><small>Keep practising</small></div>
+        <div class="history-stat"><span>AVERAGE SCORE</span><strong>${average}%</strong><small>Across your quizzes</small></div>
+        <div class="history-stat"><span>PERSONAL BEST</span><strong>${best}%</strong><small>Your highest quiz score</small></div>
+      </div>
+      <div class="history-heading"><div><span class="eyebrow">RECENT ACTIVITY</span><h2>Your learning timeline</h2></div><button class="btn btn-outline-dark" id="clearHistoryBtn" ${history.length ? "" : "disabled"}>Clear history</button></div>
+      <div class="history-list">${rows}</div>
+      <p class="history-note">Your history is saved in this browser on this device. It is not shared with other students or devices.</p>
+    </section>`;
+}
+
 function render(route) {
   const safeRoute = normaliseRoute(route);
   const sectionMatch = safeRoute.match(/^(videos|learning-materials|quizzes)-(binary|decimal|octal|hexadecimal)$/);
 
-  if (safeRoute === "home" || safeRoute === "explore") {
+  // Use the Bhutanese support-and-learning artwork on all learning areas,
+  // while keeping the homepage and About page's own visual design unchanged.
+  const useLearningBackground =
+    ["videos", "learning-materials", "quizzes", "history", "about"].includes(safeRoute) ||
+    Boolean(sectionMatch);
+  document.body.classList.toggle("learning-background-page", useLearningBackground);
+
+  if (safeRoute === "history") {
+    app.innerHTML = historyPage();
+  } else if (safeRoute === "home" || safeRoute === "explore") {
     app.innerHTML = homePage();
   } else if (safeRoute === "about") {
     app.innerHTML = aboutPage();
-  } else if (safeRoute === "history") {
-    app.innerHTML = historyPage();
   } else if (sectionMatch) {
     const [, section, topicKey] = sectionMatch;
     const type = section === "videos" ? "video" : section === "learning-materials" ? "reading" : "quiz";
     const title = section === "videos" ? "Videos" : section === "learning-materials" ? "Learning Materials" : "Quizzes";
     app.innerHTML = activityPage(topicKey, type, title);
+    if (type !== "quiz") saveLearningActivity({ type: "activity", title: `${topics[topicKey].name} · ${title}`, detail: type === "video" ? "Opened a video lesson" : "Opened learning notes" });
   } else if (["videos", "learning-materials", "quizzes"].includes(safeRoute)) {
     app.innerHTML = sectionHubPage(safeRoute);
   } else {
@@ -438,28 +526,85 @@ function render(route) {
   }
 
   const activeSection = sectionMatch ? sectionMatch[1] : safeRoute;
-  const topicForEvent = sectionMatch ? sectionMatch[2] : '';
-  trackActivity('page_view', safeRoute, topicForEvent);
-  if (sectionMatch && sectionMatch[1] === 'learning-materials') trackActivity('learning_material_view', safeRoute, topicForEvent);
-  if (sectionMatch && sectionMatch[1] === 'videos') {
-    const videoTopic = topicForEvent;
-    const hasNativeVideo = app.querySelector('video.video-player');
-    if (!hasNativeVideo) trackActivity('video_open', safeRoute, videoTopic);
-  }
-  app.querySelectorAll('video.video-player').forEach(video => {
-    if (video.dataset.analyticsBound) return;
-    video.dataset.analyticsBound = 'true';
-    video.addEventListener('play', () => trackActivity('video_play', safeRoute, safeRoute === 'home' ? 'welcome' : (topicForEvent || 'introduction')));
-  });
-  if (safeRoute === 'history') loadHistoryDashboard();
-  // Apply page-specific scenic backgrounds only on these three sections.
-  // The existing page content, cards, spacing and interactions remain unchanged.
-  document.body.dataset.page = ["videos", "learning-materials", "quizzes"].includes(activeSection)
-    ? activeSection
-    : "";
   document.querySelectorAll("[data-nav]").forEach((link) => {
     link.classList.toggle("active", link.getAttribute("href") === `#${activeSection}`);
   });
+
+  setupScrollReveals();
+
+  document.querySelectorAll(".check-conversion-answer").forEach(button => {
+    button.addEventListener("click", () => {
+      const card = button.closest(".conversion-practice-card");
+      const input = card.querySelector("input");
+      const feedback = card.querySelector(".conversion-feedback");
+      const clean = value => value.toUpperCase().replace(/₍?₂₎?|₈|₁₀|₁₆/g,"").replace(/\s+/g,"").replace(/^0+(?=.)/,"");
+      if (!input.value.trim()) {
+        feedback.className = "conversion-feedback is-error";
+        feedback.textContent = "Enter your answer first, then check it.";
+        return;
+      }
+      if (clean(input.value) === clean(card.dataset.answer)) {
+        feedback.className = "conversion-feedback is-correct";
+        feedback.innerHTML = `<strong>✓ Correct!</strong> ${card.dataset.explanation}`;
+        card.classList.add("answered-correct");
+      } else {
+        feedback.className = "conversion-feedback is-error";
+        feedback.innerHTML = `<strong>Not quite yet.</strong> Try again. Hint: ${card.dataset.explanation}`;
+        card.classList.remove("answered-correct");
+      }
+    });
+  });
+
+  const converterForm = document.getElementById("converterForm");
+  if (converterForm) {
+    const fromSelect = document.getElementById("convertFrom");
+    const toSelect = document.getElementById("convertTo");
+    const input = document.getElementById("convertInput");
+    const hint = document.getElementById("converterHint");
+    const output = document.getElementById("converterResult");
+    const baseNames = {2:"Binary",8:"Octal",10:"Decimal",16:"Hexadecimal"};
+    const validDigits = {2:/^[01]+$/i,8:/^[0-7]+$/i,10:/^[0-9]+$/i,16:/^[0-9a-f]+$/i};
+    const examples = {2:"1011",8:"25",10:"42",16:"2F"};
+    const updateHint = () => {
+      const b = Number(fromSelect.value);
+      hint.textContent = b === 2 ? "Binary accepts only 0 and 1." : b === 8 ? "Octal accepts digits 0 to 7." : b === 10 ? "Decimal accepts digits 0 to 9." : "Hexadecimal accepts 0 to 9 and letters A to F.";
+      input.placeholder = `Example: ${examples[b]}`;
+    };
+    const convert = (event) => {
+      if (event) event.preventDefault();
+      const from = Number(fromSelect.value), to = Number(toSelect.value);
+      const raw = input.value.trim().replace(/\\s+/g,"");
+      if (!raw) { output.innerHTML = '<p class="converter-error">Please enter a number to convert.</p>'; return; }
+      if (!validDigits[from].test(raw)) {
+        output.innerHTML = `<p class="converter-error">“${raw.replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}” is not valid in ${baseNames[from]}. ${hint.textContent}</p>`;
+        return;
+      }
+      try {
+        const decimalValue = from === 10 ? BigInt(raw) : BigInt("0" + (from === 16 ? "x" : from === 8 ? "o" : "b") + raw);
+        const converted = decimalValue.toString(to).toUpperCase();
+        const fromLabel = `${raw.toUpperCase()}${({2:"₂",8:"₈",10:"₁₀",16:"₁₆"})[from]}`;
+        const toLabel = `${converted}${({2:"₂",8:"₈",10:"₁₀",16:"₁₆"})[to]}`;
+        output.innerHTML = `<div class="converter-answer-kicker">CONVERSION COMPLETE</div><div class="converter-answer">${toLabel}</div><p class="converter-equation">${fromLabel} = ${decimalValue.toString(10)}₁₀ = ${toLabel}</p><div class="converter-steps"><strong>How it works</strong><ol><li>Read <strong>${raw.toUpperCase()}</strong> as a base-${from} number.</li><li>Its decimal value is <strong>${decimalValue.toString(10)}</strong>.</li><li>Express that value in base ${to} (${baseNames[to]}): <strong>${converted}</strong>.</li></ol></div><button type="button" class="converter-copy" id="copyConversion">Copy answer</button>`;
+        const copy = document.getElementById("copyConversion");
+        copy.addEventListener("click", async () => {
+          try { await navigator.clipboard.writeText(toLabel); copy.textContent = "Copied!"; }
+          catch { copy.textContent = "Select the answer above to copy"; }
+        });
+        if (typeof saveLearningActivity === "function") saveLearningActivity({type:"activity",title:"Number conversion",detail:`Converted ${fromLabel} to ${toLabel}`});
+      } catch (error) {
+        output.innerHTML = '<p class="converter-error">That number is too large to convert. Please try a shorter number.</p>';
+      }
+    };
+    converterForm.addEventListener("submit", convert);
+    fromSelect.addEventListener("change", updateHint);
+    document.getElementById("swapBases").addEventListener("click", () => {
+      const previous = fromSelect.value; fromSelect.value = toSelect.value; toSelect.value = previous; updateHint(); convert();
+    });
+    document.querySelectorAll("[data-convert-example]").forEach(button => button.addEventListener("click", () => {
+      input.value = button.dataset.convertExample; fromSelect.value = button.dataset.from; toSelect.value = button.dataset.to; updateHint(); convert();
+    }));
+    updateHint();
+  }
 
   const backButton = document.getElementById("returnButton");
   if (backButton) backButton.addEventListener("click", () => navigate("home"));
@@ -467,37 +612,107 @@ function render(route) {
   const quizForm = document.getElementById("quizForm");
   if (quizForm && sectionMatch && sectionMatch[1] === "quizzes") {
     const topicKey = sectionMatch[2];
+    const levelOrder = ["beginner", "intermediate", "challenge"];
+    const levelButtons = [...document.querySelectorAll(".quiz-level-button")];
+    let activeLevel = "beginner";
+    const unlockedLevels = new Set(["beginner"]);
+    const allCards = [...quizForm.querySelectorAll(".quiz-question")];
+    const cardsForLevel = () => allCards.filter(card => card.dataset.quizLevel === activeLevel);
+    const updateQuizProgress = () => {
+      const activeCards = cardsForLevel();
+      const answered = activeCards.filter(card => card.querySelector('input[type="radio"]:checked')).length;
+      const progressText = document.getElementById("quizProgressText");
+      const progressBar = document.getElementById("quizProgressBar");
+      progressText.textContent = `${answered} of ${activeCards.length} answered in ${activeLevel.charAt(0).toUpperCase()+activeLevel.slice(1)}`;
+      progressBar.style.width = `${(answered / activeCards.length) * 100}%`;
+      activeCards.forEach(card => card.classList.toggle("question-complete", !!card.querySelector('input[type="radio"]:checked')));
+    };
+    const showLevel = (level) => {
+      if (!unlockedLevels.has(level)) return;
+      activeLevel = level;
+      allCards.forEach(card => {
+        const visible = card.dataset.quizLevel === level;
+        card.hidden = !visible;
+        if (!visible) card.classList.remove("is-correct","is-incorrect","question-complete");
+      });
+      levelButtons.forEach(button => {
+        button.classList.toggle("is-active",button.dataset.quizLevel===level);
+        button.classList.toggle("is-locked",!unlockedLevels.has(button.dataset.quizLevel));
+        button.disabled = !unlockedLevels.has(button.dataset.quizLevel);
+        const lock = button.querySelector("em");
+        if (lock) lock.textContent = unlockedLevels.has(button.dataset.quizLevel) ? "✓ Level unlocked" : `🔒 Complete ${levelOrder[levelOrder.indexOf(button.dataset.quizLevel)-1]} first`;
+      });
+      document.getElementById("quizResult").style.display = "none";
+      updateQuizProgress();
+      document.querySelector(".quiz-progress-wrap").scrollIntoView({behavior:"smooth",block:"nearest"});
+    };
+    levelButtons.forEach(button => button.addEventListener("click", () => showLevel(button.dataset.quizLevel)));
+    quizForm.addEventListener("change", updateQuizProgress);
     quizForm.addEventListener("submit", (event) => {
       event.preventDefault();
+      const activeCards = cardsForLevel();
       let score = 0;
-      topics[topicKey].questions.forEach((question, index) => {
-        const selected = quizForm.querySelector(`input[name="q${index}"]:checked`);
-        const feedback = document.getElementById(`feedback${index}`);
-        if (selected && Number(selected.value) === question.a) {
+      let unanswered = 0;
+      activeCards.forEach(card => {
+        const index = allCards.indexOf(card);
+        const question = topics[topicKey].questions[index];
+        const selected = card.querySelector(`input[name="q${index}"]:checked`);
+        const feedback = card.querySelector(".quiz-feedback");
+        card.classList.remove("is-correct","is-incorrect");
+        if (!selected) {
+          unanswered++;
+          card.classList.add("is-incorrect");
+          feedback.innerHTML = `<strong>Not answered yet.</strong> ${question.e}`;
+        } else if (Number(selected.value) === question.a) {
           score++;
-          feedback.textContent = "✓ " + question.e;
-          feedback.style.color = "#17683a";
+          card.classList.add("is-correct");
+          feedback.innerHTML = `<strong>✓ Correct answer!</strong> ${question.e}`;
         } else {
-          feedback.textContent = "✗ " + question.e;
-          feedback.style.color = "#a33a2b";
+          card.classList.add("is-incorrect");
+          feedback.innerHTML = `<strong>✦ Correct answer: ${question.o[question.a]}</strong><br>${question.e}`;
         }
       });
+      const total = activeCards.length;
+      const percent = Math.round((score / total) * 100);
+      const levelIndex = levelOrder.indexOf(activeLevel);
+      const nextLevel = levelOrder[levelIndex+1];
+      let progression = "";
+      if (percent >= 70 && nextLevel) {
+        unlockedLevels.add(nextLevel);
+        progression = `<button type="button" class="btn btn-gold" id="goNextQuizLevel">Unlock ${nextLevel.charAt(0).toUpperCase()+nextLevel.slice(1)} →</button>`;
+      } else if (percent >= 70) {
+        progression = `<p class="quiz-level-complete">🏆 You completed all three levels. Excellent work!</p>`;
+      } else {
+        progression = `<p class="quiz-level-encourage">You need at least 70% to unlock the next level. Review the explanations and try this level again.</p>`;
+      }
       const result = document.getElementById("quizResult");
       result.style.display = "block";
-      const total = topics[topicKey].questions.length;
-      const percent = Math.round((score / total) * 100);
-      trackActivity('quiz_attempt', `quizzes-${topicKey}`, topicKey, score, total);
-      result.textContent = `Your score: ${score} / ${total} (${percent}%). ${score === total ? "Excellent work! You have mastered this topic." : score >= total * 0.7 ? "Good effort! Review the explanations for the questions you missed." : "Keep practising. Read the notes and try the quiz again."}`;
-      result.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      saveLearningActivity({type:"quiz",title:`${topics[topicKey].name} – ${activeLevel} level`,score,total,percent});
+      result.innerHTML = `<div class="quiz-result-inner"><div class="quiz-result-medal">${percent>=70?"🏆":"📘"}</div><div><span class="quiz-result-kicker">${activeLevel.toUpperCase()} LEVEL RESULT</span><h2>${score} / ${total} correct</h2><p>${percent}% score · ${total-unanswered} answered · ${unanswered} unanswered</p><strong>${percent>=70?"Well done! You passed this level.":"Keep practising. You can do it!"}</strong></div><div class="quiz-result-percent">${percent}%</div></div><div class="quiz-progression-action">${progression}</div>`;
+      const nextButton=document.getElementById("goNextQuizLevel");
+      if(nextButton) nextButton.addEventListener("click",()=>showLevel(nextLevel));
+      result.scrollIntoView({behavior:"smooth",block:"center"});
+      updateQuizProgress();
     });
     quizForm.addEventListener("reset", () => {
       window.setTimeout(() => {
-        quizForm.querySelectorAll(".quiz-feedback").forEach((item) => { item.textContent = ""; });
-        const result = document.getElementById("quizResult");
-        result.style.display = "none";
-        result.textContent = "";
-      }, 0);
+        quizForm.querySelectorAll(".quiz-feedback").forEach(item => item.textContent="");
+        quizForm.querySelectorAll(".quiz-question").forEach(card=>card.classList.remove("is-correct","is-incorrect","question-complete"));
+        document.getElementById("quizResult").style.display="none";
+        updateQuizProgress();
+      },0);
     });
+    showLevel("beginner");
   }
 }
+
+document.addEventListener("click", (event) => {
+  if (event.target && event.target.id === "clearHistoryBtn") {
+    if (confirm("Clear your learning history saved on this device?")) {
+      localStorage.removeItem("dnsLearningHistory");
+      render("history");
+    }
+  }
+});
+
 render(currentRoute);

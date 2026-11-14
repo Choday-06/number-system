@@ -258,119 +258,42 @@ h1,h2,.display { font-family: 'Playfair Display', Georgia, serif; }
 @media(max-width:520px){.ai-chat-toggle{right:14px;bottom:15px;padding:11px 15px}.ai-chat-panel{right:10px;bottom:72px;width:calc(100vw - 20px);height:min(650px,calc(100vh - 90px))}}
 
 
-/* ==========================================================
-   BHUTANESE PAGE BACKGROUNDS
-   Background imagery only: existing layout, cards, colours,
-   typography, spacing and interactions are not redesigned.
-   ========================================================== */
-body[data-page="videos"],
-body[data-page="learning-materials"],
-body[data-page="quizzes"] {
-  background-color: #f7f8f7;
-  background-image:
-    linear-gradient(rgba(5, 31, 51, .18), rgba(5, 31, 51, .18)),
-    url("assets/home-banner.jpg");
-  background-position: center top;
-  background-size: cover;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-}
-
-/* Use a matching Bhutanese scenic banner behind the existing page heading. */
-body[data-page="videos"] .page-banner {
-  background-image:
-    linear-gradient(rgba(5, 35, 56, .42), rgba(5, 35, 56, .58)),
-    url("assets/videos-banner.jpg");
-  background-position: center 48%;
-  background-size: cover;
-}
-
-body[data-page="learning-materials"] .page-banner {
-  background-image:
-    linear-gradient(rgba(5, 35, 56, .42), rgba(5, 35, 56, .58)),
-    url("assets/support-banner.jpg");
-  background-position: center 48%;
-  background-size: cover;
-}
-
-body[data-page="quizzes"] .page-banner {
-  background-image:
-    linear-gradient(rgba(5, 35, 56, .42), rgba(5, 35, 56, .58)),
-    url("assets/home-banner.jpg");
-  background-position: center 48%;
-  background-size: cover;
-}
-
-/* Keep the existing white content cards readable over the scenic page background. */
-body[data-page="videos"] .section,
-body[data-page="learning-materials"] .section,
-body[data-page="quizzes"] .section {
-  position: relative;
-}
-
-/* Website History / Analytics dashboard — follows the existing Bhutanese palette. */
-.history-heading{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-bottom:24px}
-.history-heading h2{color:var(--navy);margin:6px 0}
-.history-heading p{color:var(--muted);margin:0}
-.history-status{padding:13px 16px;margin:12px 0 20px;border:1px solid #e6d4a7;border-radius:10px;background:#fff8e9;color:#72521a}
-.history-stat-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:22px 0}
-.history-stat{padding:20px;border:1px solid #ead9ad;border-top:4px solid var(--gold);border-radius:14px;background:#fff;box-shadow:var(--shadow)}
-.history-stat span,.history-stat small{display:block;color:var(--muted)}
-.history-stat strong{display:block;margin:7px 0;color:var(--navy);font-size:2rem;font-family:'Playfair Display',Georgia,serif}
-.history-stat small{font-size:.78rem}
-.history-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin:20px 0}
-.history-panel{min-width:0;padding:22px;border:1px solid #ead9ad;border-radius:15px;background:#fff;box-shadow:var(--shadow)}
-.history-panel h3{margin:0 0 14px;color:var(--navy)}
-.history-list{list-style:none;margin:0;padding:0}
-.history-list li{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid #edf0f1}
-.history-list li:last-child{border-bottom:0}
-.history-list li span{color:var(--ink)}
-.history-list li strong{color:#8a6417;text-align:right;font-size:.9rem}
-.history-recent{margin-top:20px}
-.history-table-wrap{overflow-x:auto}
-.history-table{width:100%;border-collapse:collapse;font-size:.88rem}
-.history-table th,.history-table td{padding:11px 12px;text-align:left;border-bottom:1px solid #e8edf0;white-space:nowrap}
-.history-table th{color:#77520d;background:#fff8e9}
-.history-table td{color:var(--ink)}
-.history-privacy{margin-top:22px;padding:14px 16px;border-left:4px solid var(--gold);border-radius:8px;background:#fff8e9;color:#665b48;font-size:.85rem}
-@media(max-width:850px){.history-stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.history-grid{grid-template-columns:1fr}}
-@media(max-width:520px){.history-stat-grid{grid-template-columns:1fr}.history-heading .btn{width:100%}}
-
-/* Google Sites embed responsiveness */
+/* Google Sites embed responsiveness:
+   The embedded frame is narrower than a full browser window.
+   Switch to the existing hamburger navigation before the header overflows. */
 html, body {
   max-width: 100%;
   overflow-x: hidden;
 }
-
 img, video, iframe {
   max-width: 100%;
 }
-
-.site-header, .brand, .site-header nav {
+.site-header {
   min-width: 0;
 }
-
+.brand {
+  min-width: 0;
+}
+.site-header nav {
+  min-width: 0;
+}
 @media (max-width: 1050px) {
   .site-header {
     flex-wrap: wrap;
     gap: 10px 14px;
     padding: 10px 16px;
   }
-
   .brand {
     font-size: .95rem;
   }
-
   .brand img {
     width: 42px;
     height: 42px;
   }
-
   .menu-toggle {
     display: block;
     margin-left: auto;
   }
-
   .site-header nav {
     display: none;
     flex-basis: 100%;
@@ -379,67 +302,1777 @@ img, video, iframe {
     align-items: stretch;
     gap: 4px;
   }
-
   .site-header nav.open {
     display: flex;
   }
-
   .site-header nav a {
     display: block;
     width: 100%;
     text-align: center;
     padding: 9px 12px;
   }
-
-  .section, .breadcrumb {
+  .section,
+  .breadcrumb {
     width: min(100% - 28px, 1120px);
   }
 }
-
 @media (max-width: 850px) {
   .intro-layout,
   .home-welcome-section .intro-layout {
     grid-template-columns: 1fr;
   }
-
-  .feature-grid, .learning-actions {
+  .feature-grid,
+  .learning-actions {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-
   .team-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-
   .hero {
     min-height: 340px;
     padding: 48px 16px;
   }
 }
-
 @media (max-width: 560px) {
-  .feature-grid, .learning-actions, .topic-grid, .team-grid {
+  .feature-grid,
+  .learning-actions,
+  .topic-grid,
+  .team-grid {
     grid-template-columns: 1fr;
   }
-
   .hero {
     min-height: 280px;
     padding: 36px 14px;
   }
-
   .hero-content {
     padding: 12px;
   }
-
-  .info-panel, .welcome-video-card, .content-card {
+  .info-panel,
+  .welcome-video-card,
+  .content-card {
     padding: 20px;
   }
-
   .ppt-resource-card {
     min-width: 0;
   }
-
   .detailed-note-section {
     grid-template-columns: 1fr;
   }
 }
 
+
+/* =========================================================
+   2026 HOMEPAGE REDESIGN — Bhutanese digital learning theme
+   Keeps existing routes and learning content intact.
+   ========================================================= */
+:root {
+  --gold-deep: #b77b12;
+  --surface: #ffffff;
+  --surface-soft: #f1f6f8;
+  --line: #dce6eb;
+  --radius-xl: 24px;
+}
+.hero-redesign {
+  min-height: 510px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: left;
+  overflow: hidden;
+  padding: clamp(42px, 7vw, 88px) clamp(22px, 8vw, 110px);
+  background:
+    linear-gradient(90deg, rgba(4,27,47,.94) 0%, rgba(5,39,63,.84) 48%, rgba(5,39,63,.22) 100%),
+    url('assets/home-banner.jpg') center 43%/cover;
+}
+.hero-redesign::after {
+  background: linear-gradient(0deg, rgba(3,22,39,.55), transparent 58%);
+}
+.hero-redesign-content {
+  position: relative;
+  z-index: 2;
+  max-width: 760px;
+  padding: 0;
+}
+.hero-redesign .eyebrow { color: #ffdf83; }
+.hero-redesign h1 {
+  max-width: 720px;
+  margin: 17px 0 16px;
+  font-size: clamp(2.7rem, 6.5vw, 5.2rem);
+  letter-spacing: -.035em;
+}
+.hero-redesign h1 em { color: #ffd66f; font-style: normal; }
+.hero-redesign p { margin: 0 0 25px; max-width: 640px; color: #f0f5f8; font-size: clamp(1rem, 1.8vw, 1.2rem); }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.hero-redesign .btn { min-width: 158px; border-radius: 999px; padding: 14px 22px; }
+.hero-redesign .btn-outline { border: 1.5px solid #ffe19a; color: #fff; background: rgba(5,34,56,.42); }
+.hero-points { display: flex; flex-wrap: wrap; gap: 12px 24px; margin-top: 32px; color: #fff4d4; font-size: .88rem; font-weight: 700; }
+.hero-binary-art { position:absolute; right:8%; bottom:12%; display:grid; gap:4px; padding:18px 24px; border:1px solid #79d8ed88; border-radius:18px; background:#042b4b9c; box-shadow:0 0 40px #2ac9ed35; color:#8deeff; font:700 clamp(1rem,2vw,1.6rem)/1.5 monospace; transform:rotate(4deg); }
+.hero-binary-art b { color:#ffdc79; font-size:1.5em; text-align:center; }
+.welcome-redesign { display:grid; grid-template-columns:1fr 1fr; gap:30px; align-items:center; padding-top:66px; padding-bottom:66px; }
+.welcome-copy { padding:12px 10px; }
+.welcome-copy h2 { color:var(--navy); font-size:clamp(2rem,4vw,3rem); margin:12px 0; }
+.welcome-copy p { max-width:620px; color:#526a7a; font-size:1.04rem; line-height:1.8; }
+.welcome-mini-stats { display:flex; flex-wrap:wrap; gap:10px; margin-top:25px; }
+.welcome-mini-stats span { padding:10px 14px; border:1px solid #e7d6aa; border-radius:12px; background:#fffaf0; color:#526273; font-size:.82rem; }
+.welcome-mini-stats strong { color:#a87916; font-size:1.2rem; margin-right:4px; }
+.welcome-video-redesign { border:1px solid #e7e1d5; border-top:5px solid var(--gold); border-radius:20px; padding:24px; box-shadow:var(--shadow); background:#fff; }
+.welcome-video-redesign h2 { color:var(--navy); font-size:1.55rem; margin:10px 0 7px; }
+.welcome-video-redesign p { color:var(--muted); margin:0 0 14px; }
+.welcome-video-redesign .video-player { display:block; width:100%; border-radius:14px; background:#071f34; }
+.learning-path-section { padding-top:54px; }
+.learning-path-section .section-heading h2, .home-tools-section .section-heading h2 { font-size:clamp(2rem,4vw,2.8rem); }
+.topic-grid { gap:20px; }
+.topic-home-card {
+  min-height:285px;
+  padding:24px;
+  border:1px solid #d6e2e8;
+  border-radius:20px;
+  background:linear-gradient(145deg,#fff 0%,#f4f8fa 100%);
+  color:var(--ink);
+  box-shadow:0 12px 28px rgba(6,35,56,.08);
+  transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+}
+.topic-home-card:hover { transform:translateY(-6px); box-shadow:0 18px 38px rgba(6,35,56,.15); border-color:#d9b75f; }
+.topic-card-top { display:flex; justify-content:space-between; align-items:center; gap:12px; }
+.topic-home-card .topic-number { color:#a87916; letter-spacing:1.6px; font-size:.72rem; font-weight:800; }
+.topic-base { display:inline-flex; padding:5px 11px; border-radius:999px; background:#fff1cf; color:#81580c; font-size:.75rem; font-weight:800; }
+.topic-card-symbol { display:grid; place-items:center; width:62px; height:62px; margin:18px 0 10px; border-radius:18px; background:linear-gradient(145deg,#0c3857,#176184); color:#ffdc79; font:800 1.5rem monospace; box-shadow:0 8px 18px #0c38572b; }
+.topic-home-card h3 { color:var(--navy); margin:7px 0; font-size:1.45rem; }
+.topic-home-card .topic-tagline { color:#9a6d17; font-weight:700; margin:0 0 9px; }
+.topic-home-card .topic-description { color:#5c7080; font-size:.9rem; line-height:1.65; }
+.topic-card-binary { border-top:4px solid #299fce; }
+.topic-card-decimal { border-top:4px solid #e4a82c; }
+.topic-card-octal { border-top:4px solid #8a6bd2; }
+.topic-card-hexadecimal { border-top:4px solid #27a88b; }
+.topic-card-actions { display:flex; flex-wrap:wrap; gap:8px; margin-top:18px; }
+.topic-card-actions .btn { padding:9px 13px; border-radius:10px; font-size:.82rem; }
+.btn-outline-dark { border:1px solid #c7d5dd; background:#fff; color:#17415c; }
+.btn-outline-dark:hover { background:#fff6df; border-color:#d7b45d; }
+.home-tools-section { padding-top:25px; }
+.home-tools-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; }
+.home-tool-card { display:flex; flex-direction:column; align-items:flex-start; gap:9px; min-height:205px; padding:24px; border:1px solid #dce5ea; border-radius:18px; background:#fff; color:var(--ink); text-align:left; box-shadow:0 9px 24px rgba(6,35,56,.06); cursor:pointer; transition:transform .2s,border-color .2s,box-shadow .2s; }
+.home-tool-card:hover { transform:translateY(-5px); border-color:#d7b45d; box-shadow:var(--shadow); }
+.home-tool-icon { display:grid; place-items:center; width:46px; height:46px; border-radius:14px; background:#fff1cf; color:#9b6b11; font-size:1.4rem; }
+.home-tool-card strong { color:var(--navy); font-size:1.1rem; }
+.home-tool-card small { color:var(--muted); font-size:.88rem; line-height:1.5; }
+.home-tool-card .tool-link { margin-top:auto; color:#a87916; font-size:.86rem; font-weight:800; }
+.daily-challenge-section { padding-top:10px; padding-bottom:75px; }
+.daily-challenge { display:grid; grid-template-columns:1fr 1fr; align-items:center; gap:28px; padding:clamp(22px,4vw,38px); border-radius:24px; color:#fff; background:linear-gradient(120deg,#082943,#145574); box-shadow:0 16px 34px #08294325; position:relative; overflow:hidden; }
+.daily-challenge:after { content:"0101 1010 1101"; position:absolute; right:12px; top:8px; color:#ffffff0c; font:800 2.2rem monospace; letter-spacing:5px; transform:rotate(-12deg); pointer-events:none; }
+.daily-challenge .eyebrow { color:#ffdf83; }
+.daily-challenge h2 { margin:9px 0; color:#fff; font-size:clamp(1.7rem,3vw,2.3rem); }
+.daily-challenge p { color:#dceaf1; }
+.challenge-options { display:grid; grid-template-columns:repeat(4,1fr); gap:9px; position:relative; z-index:1; }
+.challenge-option { padding:13px 8px; border:1px solid #ffffff55; border-radius:12px; background:#ffffff12; color:#fff; font-size:1.05rem; font-weight:800; cursor:pointer; transition:.2s; }
+.challenge-option:hover { background:#ffffff2a; transform:translateY(-2px); }
+.challenge-option.is-correct { background:#c9f5dc; border-color:#c9f5dc; color:#145b39; }
+.challenge-option.is-wrong { background:#ffe0dc; border-color:#ffe0dc; color:#9b3024; }
+.challenge-feedback { grid-column:1/-1; min-height:25px; margin:4px 0 0!important; color:#fff4d4!important; font-size:.86rem; }
+.challenge-feedback.is-correct-text { color:#bdf5d4!important; font-weight:800; }
+@media(max-width:800px) {
+  .hero-redesign { min-height:460px; padding:48px 25px; }
+  .hero-binary-art { right:4%; bottom:5%; opacity:.55; }
+  .welcome-redesign { grid-template-columns:1fr; }
+  .home-tools-grid { grid-template-columns:1fr; }
+  .daily-challenge { grid-template-columns:1fr; }
+}
+@media(max-width:600px) {
+  .hero-redesign { min-height:520px; background-position:58% center; }
+  .hero-redesign h1 { font-size:2.55rem; }
+  .hero-points { gap:8px 14px; font-size:.78rem; }
+  .hero-binary-art { right:12px; bottom:10px; font-size:.85rem; }
+  .topic-grid { grid-template-columns:1fr; }
+  .topic-home-card { min-height:0; }
+  .welcome-redesign { padding-top:42px; padding-bottom:42px; }
+  .welcome-mini-stats span { flex:1 1 42%; }
+  .challenge-options { grid-template-columns:repeat(2,1fr); }
+}
+
+/* =========================================================
+   MOTION REDESIGN — animated, interactive learning experience
+   ========================================================= */
+.hero-redesign {
+  min-height: min(760px, calc(100vh - 100px));
+  background-position: center 43%;
+  isolation: isolate;
+}
+.hero-redesign::before {
+  content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background: radial-gradient(circle at 76% 42%, rgba(255,207,94,.18), transparent 28%),
+              linear-gradient(115deg, rgba(3,24,42,.24), transparent 62%);
+  animation: heroGlow 8s ease-in-out infinite alternate;
+}
+.hero-redesign-content { animation: heroEnter 1s cubic-bezier(.2,.75,.2,1) both; }
+.hero-redesign .eyebrow { animation: fadeDrop .8s .15s both; }
+.hero-title { line-height: 1.08; }
+.word-rotator { display: inline-grid; position: relative; min-height: 1.15em; vertical-align: bottom; color: #ffd66f; }
+.word-rotator span { grid-area: 1/1; opacity: 0; transform: translateY(32px) rotateX(-70deg); animation: wordFlip 12s infinite; }
+.word-rotator span:nth-child(1) { animation-delay: 0s; }
+.word-rotator span:nth-child(2) { animation-delay: 3s; }
+.word-rotator span:nth-child(3) { animation-delay: 6s; }
+.word-rotator span:nth-child(4) { animation-delay: 9s; }
+.hero-redesign p { animation: fadeUp .9s .35s both; }
+.hero-actions { animation: fadeUp .9s .5s both; }
+.hero-points { animation: fadeUp .9s .7s both; }
+.hero-orbit { position:absolute; z-index:1; width:310px; height:310px; right:13%; top:50%; transform:translateY(-50%); border:1px solid #ffdf8350; border-radius:50%; animation: orbitSpin 36s linear infinite; pointer-events:none; }
+.hero-orbit::before,.hero-orbit::after { content:""; position:absolute; inset:28px; border:1px dashed #ffdf8345; border-radius:50%; }
+.hero-orbit::after { inset:65px; border-style:solid; }
+.hero-orbit i { position:absolute; display:grid; place-items:center; width:44px; height:44px; border-radius:50%; color:#082943; background:#ffdf83; font:800 1rem monospace; box-shadow:0 0 24px #ffd66f90; font-style:normal; }
+.hero-orbit i:nth-child(1) { top:-20px; left:calc(50% - 22px); }
+.hero-orbit i:nth-child(2) { right:-20px; top:calc(50% - 22px); }
+.hero-orbit i:nth-child(3) { bottom:-20px; left:calc(50% - 22px); }
+.hero-orbit i:nth-child(4) { left:-20px; top:calc(50% - 22px); }
+.hero-floating-code { position:absolute; z-index:1; right:4%; top:18%; display:grid; gap:24px; color:#b8f3ff88; font:800 1.15rem monospace; letter-spacing:5px; pointer-events:none; }
+.hero-floating-code span { animation: floatCode 5s ease-in-out infinite; }
+.hero-floating-code span:nth-child(2) { animation-delay:-1.6s; margin-left:28px; }
+.hero-floating-code span:nth-child(3) { animation-delay:-3.1s; }
+.hero-scroll-cue { position:absolute; z-index:2; bottom:22px; left:50%; transform:translateX(-50%); display:flex; align-items:center; gap:10px; color:#fff4d4; font-size:.65rem; letter-spacing:2px; font-weight:800; opacity:.85; }
+.hero-scroll-cue span { width:18px; height:28px; border:1.5px solid #ffdf83; border-radius:12px; position:relative; }
+.hero-scroll-cue span::after { content:""; position:absolute; top:5px; left:7px; width:2px; height:6px; border-radius:2px; background:#ffdf83; animation: scrollDot 1.3s infinite; }
+.hero-binary-art { animation: floatCard 6s ease-in-out infinite; box-shadow:0 18px 55px #001a2b70, inset 0 0 30px #8beaff12; backdrop-filter:blur(8px); }
+.hero-redesign .btn { position:relative; overflow:hidden; transition:transform .3s, box-shadow .3s, filter .3s; }
+.hero-redesign .btn::after { content:""; position:absolute; inset:-80% auto -80% -35%; width:24%; transform:rotate(22deg); background:#ffffff80; transition:left .55s; }
+.hero-redesign .btn:hover { transform:translateY(-5px) scale(1.035); box-shadow:0 12px 30px #001a2b70,0 0 0 4px #ffdf8330; filter:saturate(1.15); }
+.hero-redesign .btn:hover::after { left:125%; }
+.topic-home-card, .home-tool-card { transform-style:preserve-3d; transition:transform .38s cubic-bezier(.2,.8,.2,1), box-shadow .38s, border-color .38s; }
+.topic-home-card::before { content:""; position:absolute; inset:0; pointer-events:none; opacity:0; background:linear-gradient(120deg,transparent 20%,#ffffff20 48%,transparent 72%); transform:translateX(-110%); }
+.topic-home-card:hover::before { opacity:1; animation:cardShine .8s ease; }
+.topic-home-card:hover { transform:translateY(-12px) rotateX(2deg) rotateY(-1deg); box-shadow:0 26px 48px #06233826,0 0 0 1px #e6b43d55; }
+.topic-card-symbol { transition:transform .45s cubic-bezier(.2,.8,.2,1), box-shadow .45s; }
+.topic-home-card:hover .topic-card-symbol { transform:translateY(-4px) rotate(-8deg) scale(1.12); box-shadow:0 12px 28px #0c385755; }
+.home-tool-card:hover { transform:translateY(-9px) scale(1.02); }
+.home-tool-card:hover .home-tool-icon { animation:iconBounce .55s ease; }
+.daily-challenge { background:linear-gradient(115deg,#06243b,#0b4562 55%,#176a79); }
+.daily-challenge::before { content:""; position:absolute; width:340px; height:340px; right:18%; top:-220px; border:1px solid #ffdf8345; border-radius:50%; box-shadow:0 0 0 28px #ffdf8310,0 0 0 58px #ffdf830a; animation:orbitSpin 30s linear infinite; }
+.challenge-option:hover { transform:translateY(-4px) scale(1.04); box-shadow:0 8px 18px #001a2b55; }
+.reveal-on-scroll { opacity:0; transform:translateY(34px); transition:opacity .75s ease, transform .75s cubic-bezier(.2,.7,.2,1); transition-delay:var(--reveal-delay,0ms); }
+.reveal-on-scroll.is-visible { opacity:1; transform:translateY(0); }
+.welcome-video-card { transition:transform .4s, box-shadow .4s; }
+.welcome-video-card:hover { transform:translateY(-7px); box-shadow:0 24px 55px #08294322; }
+.section-heading h2 { position:relative; display:inline-block; }
+.section-heading h2::after { content:""; display:block; width:54px; height:3px; margin:12px auto 0; border-radius:4px; background:linear-gradient(90deg,#e6b43d,#f6d987); transition:width .4s; }
+.section-heading:hover h2::after { width:110px; }
+@keyframes wordFlip { 0%,5% {opacity:0; transform:translateY(32px) rotateX(-70deg)} 9%,22% {opacity:1; transform:translateY(0) rotateX(0)} 27%,100% {opacity:0; transform:translateY(-30px) rotateX(70deg)} }
+@keyframes heroEnter { from {opacity:0; transform:translateY(36px)} to {opacity:1; transform:translateY(0)} }
+@keyframes fadeDrop { from {opacity:0; transform:translateY(-15px)} to {opacity:1; transform:translateY(0)} }
+@keyframes fadeUp { from {opacity:0; transform:translateY(22px)} to {opacity:1; transform:translateY(0)} }
+@keyframes heroGlow { from {opacity:.45; transform:scale(1)} to {opacity:1; transform:scale(1.06)} }
+@keyframes orbitSpin { to { transform:translateY(-50%) rotate(360deg) } }
+@keyframes floatCode { 0%,100% {transform:translate3d(0,0,0);opacity:.45} 50% {transform:translate3d(-12px,-18px,0);opacity:1} }
+@keyframes floatCard { 0%,100% {transform:translateY(0) rotate(1deg)} 50% {transform:translateY(-15px) rotate(-2deg)} }
+@keyframes scrollDot { 0% {opacity:0;transform:translateY(0)} 40% {opacity:1} 100% {opacity:0;transform:translateY(9px)} }
+@keyframes cardShine { from {transform:translateX(-110%)} to {transform:translateX(120%)} }
+@keyframes iconBounce { 0%,100% {transform:translateY(0) rotate(0)} 40% {transform:translateY(-8px) rotate(-8deg)} 70% {transform:translateY(2px) rotate(5deg)} }
+@media(max-width:900px) { .hero-orbit {right:4%;width:230px;height:230px;opacity:.65}.hero-floating-code{display:none} }
+@media(max-width:650px) { .hero-redesign{min-height:650px}.hero-orbit{width:170px;height:170px;right:5%;top:auto;bottom:80px;transform:none;opacity:.45}.hero-orbit i{width:32px;height:32px}.hero-scroll-cue{display:none}.hero-binary-art{bottom:18px;right:12px}.hero-title{font-size:clamp(2.35rem,11vw,3.3rem)!important}.hero-redesign-content{padding-bottom:90px} }
+@media(prefers-reduced-motion:reduce) { *,*::before,*::after {animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}.reveal-on-scroll{opacity:1;transform:none} }
+
+
+/* MY HISTORY — restored student activity dashboard */
+.history-banner { background:linear-gradient(120deg,#08263f,#0d4962 58%,#176a79); }
+.history-section { max-width:1120px; margin:0 auto; }
+.history-stats { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:20px; margin:0 0 46px; }
+.history-stat { padding:25px 28px; border:1px solid #e8dfca; border-top:4px solid #eab83e; border-radius:18px; background:linear-gradient(145deg,#fff,#fffaf0); box-shadow:0 12px 32px #092a4010; transition:transform .3s,box-shadow .3s; }
+.history-stat:hover { transform:translateY(-7px); box-shadow:0 20px 38px #092a401c; }
+.history-stat span { display:block; color:#a87916; font-size:.7rem; font-weight:900; letter-spacing:1.8px; }
+.history-stat strong { display:block; color:#092c46; font-size:2.6rem; line-height:1.25; margin:9px 0 4px; }
+.history-stat small { color:#64788a; }
+.history-heading { display:flex; align-items:end; justify-content:space-between; gap:18px; margin-bottom:18px; }
+.history-heading h2 { margin:7px 0 0; color:#0a2d47; font-family:Georgia,serif; font-size:clamp(1.7rem,3vw,2.25rem); }
+.history-list { display:grid; gap:12px; }
+.history-entry { display:flex; align-items:center; gap:16px; padding:18px 20px; background:white; border:1px solid #e6ebef; border-radius:15px; box-shadow:0 6px 20px #092a4009; animation:historyIn .45s both; transition:transform .25s,border-color .25s; }
+.history-entry:hover { transform:translateX(5px); border-color:#e6b43d; }
+.history-entry-icon { display:grid; place-items:center; flex:0 0 44px; width:44px; height:44px; border-radius:14px; background:#fff3cf; color:#8b6512; font-size:1.3rem; }
+.history-entry div { flex:1; min-width:0; }
+.history-entry strong { color:#102f49; }
+.history-entry p { margin:4px 0; color:#526b7e; }
+.history-entry small { color:#82909b; }
+.history-entry-tag { color:#9a721b; font-size:.65rem; font-weight:900; letter-spacing:1.3px; }
+.history-empty { text-align:center; padding:55px 20px; border:1px dashed #d7c28d; border-radius:20px; background:linear-gradient(145deg,#fffdf7,#f5f9fb); }
+.history-empty>span { display:block; font-size:2.5rem; color:#c29124; animation:floatCard 4s ease-in-out infinite; }
+.history-empty h3 { color:#0b2f49; font-family:Georgia,serif; font-size:1.6rem; }
+.history-empty p { max-width:520px; margin:0 auto 22px; color:#63788a; }
+.history-note { margin-top:20px; color:#7a8994; font-size:.83rem; }
+@keyframes historyIn { from {opacity:0;transform:translateY(12px)} to {opacity:1;transform:translateY(0)} }
+@media(max-width:700px) { .history-stats {grid-template-columns:1fr;gap:12px}.history-stat{padding:18px 22px}.history-heading{align-items:start;flex-direction:column}.history-entry{align-items:flex-start;padding:15px}.history-entry-tag{display:none} }
+
+
+/* INTERACTIVE NUMBER SYSTEM CONVERSION LAB */
+.converter-lab { margin:52px 0 38px; padding:clamp(22px,4vw,42px); border-radius:24px; color:#f8fbff; background:radial-gradient(circle at 88% 8%,#1a6372 0,transparent 34%),linear-gradient(135deg,#08263f,#0b3d58 65%,#0d5361); box-shadow:0 22px 55px #08263f24; overflow:hidden; position:relative; }
+.converter-lab:before { content:"01 10 11 00 101 010"; position:absolute; right:-20px; bottom:12px; color:#ffffff0b; font-size:clamp(2rem,6vw,5rem); font-weight:900; letter-spacing:10px; transform:rotate(-12deg); pointer-events:none; }
+.converter-heading { max-width:760px; position:relative; z-index:1; }
+.converter-heading .eyebrow { color:#ffd56d; }
+.converter-heading h2 { margin:9px 0 10px; color:#fff; font:700 clamp(1.8rem,4vw,2.65rem)/1.15 Georgia,serif; }
+.converter-heading p { color:#d0e0e9; line-height:1.7; }
+.converter-panel { position:relative; z-index:1; margin-top:26px; padding:clamp(18px,3vw,30px); border:1px solid #ffffff26; border-radius:19px; background:#ffffff0d; backdrop-filter:blur(8px); }
+.converter-controls { display:grid; grid-template-columns:1fr auto 1fr; align-items:end; gap:14px; }
+.converter-controls label,.converter-form>label { display:grid; gap:9px; color:#f8e4b0; font-size:.85rem; font-weight:800; }
+.converter-controls select { width:100%; min-height:48px; padding:0 13px; border:1px solid #ffffff38; border-radius:11px; background:#f9fbfd; color:#12334b; font:600 1rem inherit; }
+.converter-swap { width:46px; height:46px; border:1px solid #ffd56d; border-radius:50%; background:#f2bd45; color:#092d47; font-size:1.65rem; cursor:pointer; transition:transform .3s,box-shadow .3s; }
+.converter-swap:hover { transform:rotate(180deg); box-shadow:0 0 0 7px #f2bd4526; }
+.converter-form { margin-top:23px; }
+.converter-input-row { display:flex; gap:10px; margin-top:9px; }
+.converter-input-row input { flex:1; min-width:0; min-height:52px; padding:0 16px; border:1px solid #ffffff45; border-radius:11px; background:#fff; color:#102f49; font-size:1.1rem; letter-spacing:1px; }
+.converter-hint { margin:8px 0 0; color:#c8d9e3; font-size:.82rem; }
+.converter-result { min-height:135px; margin-top:22px; padding:22px; border:1px solid #ffd56d55; border-radius:15px; background:#061f33a8; animation:converterGlow 4s ease-in-out infinite; }
+.converter-result-placeholder { display:grid; justify-items:center; gap:7px; padding:12px; color:#d5e4ed; text-align:center; }
+.converter-result-placeholder span { color:#ffd56d; font-size:1.9rem; animation:swapPulse 2.4s ease-in-out infinite; }
+.converter-result-placeholder small { color:#a9c0cf; }
+.converter-answer-kicker { color:#ffd56d; font-size:.7rem; font-weight:900; letter-spacing:1.7px; }
+.converter-answer { margin:5px 0; color:#fff; font-size:clamp(2rem,5vw,3rem); font-weight:900; letter-spacing:2px; overflow-wrap:anywhere; animation:answerPop .45s both; }
+.converter-equation { color:#d7e7ef; font-size:1rem; overflow-wrap:anywhere; }
+.converter-steps { margin-top:15px; padding:14px 16px; border-radius:11px; background:#ffffff0c; color:#e7f0f5; }
+.converter-steps strong { color:#ffd56d; }
+.converter-steps ol { margin:9px 0 0; padding-left:22px; line-height:1.8; }
+.converter-copy { margin-top:13px; padding:9px 14px; border:1px solid #ffd56d; border-radius:8px; background:transparent; color:#ffdc83; font-weight:800; cursor:pointer; }
+.converter-copy:hover { background:#ffd56d; color:#08263f; }
+.converter-error { margin:0; color:#ffb9a9; font-weight:700; }
+.converter-examples { display:flex; align-items:center; flex-wrap:wrap; gap:9px; margin-top:18px; }
+.converter-examples>span { margin-right:4px; color:#ffd56d; font-size:.7rem; font-weight:900; letter-spacing:1.2px; }
+.converter-examples button { padding:8px 11px; border:1px solid #ffffff38; border-radius:20px; background:#ffffff10; color:#eff7fb; font-size:.82rem; cursor:pointer; transition:background .2s,transform .2s; }
+.converter-examples button:hover { transform:translateY(-2px); background:#ffffff25; }
+@keyframes answerPop { from {opacity:0;transform:translateY(10px) scale(.97)} to {opacity:1;transform:translateY(0) scale(1)} }
+@keyframes swapPulse { 50% {transform:rotate(12deg) scale(1.13)} }
+@keyframes converterGlow { 50% {box-shadow:inset 0 0 28px #f3c4510b,0 0 22px #f3c45110} }
+@media(max-width:620px) { .converter-controls {grid-template-columns:1fr;gap:12px}.converter-swap{justify-self:center;transform:rotate(90deg)}.converter-swap:hover{transform:rotate(270deg)}.converter-input-row{flex-direction:column}.converter-input-row .btn{width:100%}.converter-examples{align-items:flex-start}.converter-examples>span{width:100%} }
+
+
+/* CONVERSION PRACTICE QUESTIONS — embedded in each topic's Reading Material */
+.conversion-practice { margin:34px 0 30px; padding:clamp(20px,3vw,32px); border:1px solid #e7d7aa; border-radius:20px; background:linear-gradient(145deg,#fffdf7,#f4f8fa); box-shadow:0 12px 32px #102f490d; }
+.conversion-practice-title { max-width:760px; margin-bottom:22px; }
+.conversion-practice-title h2 { margin:7px 0 8px; color:#0c2e48; font:700 clamp(1.6rem,3vw,2.15rem)/1.2 Georgia,serif; }
+.conversion-practice-title p { color:#5d7385; line-height:1.65; }
+.conversion-practice-list { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; }
+.conversion-practice-card { padding:18px; border:1px solid #e0e8ed; border-radius:14px; background:#fff; transition:transform .25s,border-color .25s,box-shadow .25s; }
+.conversion-practice-card:hover { transform:translateY(-3px); border-color:#e8bc50; box-shadow:0 12px 24px #0c2e4810; }
+.conversion-question-label { color:#a8750d; font-size:.68rem; font-weight:900; letter-spacing:1.4px; }
+.conversion-practice-card h3 { min-height:48px; margin:9px 0 14px; color:#102f49; font-size:1rem; line-height:1.5; }
+.conversion-answer-row { display:flex; gap:8px; }
+.conversion-answer-row input { flex:1; min-width:0; width:100%; padding:11px 12px; border:1px solid #ccd9e1; border-radius:9px; color:#102f49; font-weight:700; }
+.conversion-answer-row .btn { padding:10px 13px; white-space:nowrap; }
+.conversion-feedback { min-height:0; margin-top:10px; font-size:.85rem; line-height:1.55; }
+.conversion-feedback:empty { display:none; }
+.conversion-feedback.is-correct { padding:10px 12px; border-radius:9px; background:#e9f7ef; color:#17643a; }
+.conversion-feedback.is-error { padding:10px 12px; border-radius:9px; background:#fff1e9; color:#93451f; }
+.conversion-practice-card.answered-correct { border-color:#70bd8c; background:#fbfffc; }
+@media(max-width:700px) { .conversion-practice-list{grid-template-columns:1fr}.conversion-practice-card h3{min-height:0}.conversion-answer-row{flex-direction:column}.conversion-answer-row .btn{width:100%} }
+
+
+/* PROMINENT CONVERSION CALCULATOR — first tool in Reading Material */
+.converter-lab { margin:30px 0 34px !important; padding:clamp(24px,4vw,40px) !important; border:2px solid #e6b83f !important; box-shadow:0 18px 48px #08263f22,0 0 0 5px #e8b83c13 !important; }
+.converter-heading h2 { font-size:clamp(2rem,4vw,2.8rem) !important; }
+.converter-panel { background:#ffffff13 !important; }
+.converter-form button { min-width:150px; font-weight:900; }
+
+
+/* QUIZ REDESIGN — guided, colourful and easier for students to study */
+.quiz-intro { position:relative; overflow:hidden; display:grid; grid-template-columns:auto 1fr; gap:10px 18px; align-items:center; padding:28px clamp(20px,4vw,38px); margin-bottom:24px; border:1px solid #e8c45e; border-radius:20px; background:radial-gradient(circle at 90% 0%,#f7df9b 0,transparent 35%),linear-gradient(125deg,#092c47,#14536b); color:#fff; box-shadow:0 16px 38px #092c4720; }
+.quiz-intro:after { content:"01 10 11 00"; position:absolute; right:15px; bottom:-24px; color:#ffffff0c; font-size:clamp(2rem,6vw,4.5rem); font-weight:900; letter-spacing:8px; transform:rotate(-8deg); pointer-events:none; }
+.quiz-emblem { grid-row:span 2; display:grid; place-items:center; width:62px; height:62px; border:1px solid #ffdf83; border-radius:18px; background:#ffffff12; color:#ffdf83; font-size:2rem; animation:quizEmblemFloat 4s ease-in-out infinite; }
+.quiz-intro h2 { margin:0 0 6px; color:white; font-size:clamp(1.6rem,3vw,2.3rem); }
+.quiz-intro p { margin:0; color:#d9e7ee; max-width:760px; }
+.quiz-perks { grid-column:2; display:flex; flex-wrap:wrap; gap:9px 18px; margin-top:7px; color:#ffdf83; font-size:.8rem; font-weight:700; }
+.quiz-learning-guide { display:flex; align-items:flex-start; gap:15px; padding:18px 20px; margin:20px 0 24px; border:1px solid #d9e7ee; border-left:4px solid #e6b43d; border-radius:14px; background:linear-gradient(100deg,#fffdf5,#f2f8fb); box-shadow:0 8px 24px #102f4909; }
+.quiz-guide-icon { flex:0 0 42px; display:grid; place-items:center; width:42px; height:42px; border-radius:13px; background:#fff0c7; color:#9a6c0c; font-size:1.4rem; }
+.quiz-learning-guide strong { color:#0b2e48; }
+.quiz-learning-guide p { margin:4px 0 0; color:#617789; font-size:.92rem; }
+.quiz-progress-wrap { position:sticky; top:78px; z-index:8; padding:13px 16px; margin:0 0 20px; border:1px solid #dce6ec; border-radius:13px; background:#ffffffed; backdrop-filter:blur(10px); box-shadow:0 7px 20px #102f490c; }
+.quiz-progress-top { display:flex; justify-content:space-between; gap:10px; margin-bottom:8px; color:#526d80; font-size:.78rem; font-weight:800; }
+.quiz-progress-track { height:9px; overflow:hidden; border-radius:20px; background:#e8eef2; }
+.quiz-progress-track span { display:block; width:0; height:100%; border-radius:20px; background:linear-gradient(90deg,#e7b53c,#4eb39b); transition:width .4s ease; }
+.quiz-question-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
+.quiz-question { position:relative; padding:20px; border:1px solid #e0e8ed; border-radius:17px; background:linear-gradient(145deg,#fff,#f9fbfc); box-shadow:0 7px 20px #102f4909; transition:transform .25s,border-color .25s,box-shadow .25s; animation:quizCardIn .55s both; }
+.quiz-question:nth-child(2n) { animation-delay:.06s; }
+.quiz-question:hover { transform:translateY(-4px); border-color:#e4bd59; box-shadow:0 14px 28px #102f4916; }
+.quiz-question-top { display:flex; justify-content:space-between; align-items:center; gap:8px; margin-bottom:12px; }
+.quiz-number { color:#a57412; font-size:.68rem; font-weight:900; letter-spacing:1.4px; }
+.quiz-mark { padding:4px 8px; border-radius:20px; background:#eef4f7; color:#64798a; font-size:.63rem; font-weight:800; }
+.quiz-question>p { min-height:54px; margin:0 0 15px; color:#102f49; font-weight:800; font-size:1.02rem; line-height:1.5; }
+.quiz-options-grid { display:grid; gap:9px; }
+.quiz-option { display:flex; align-items:center; gap:10px; min-height:46px; padding:9px 11px; border:1px solid #dce5eb; border-radius:11px; background:#fff; color:#345064; cursor:pointer; transition:background .2s,border-color .2s,transform .2s; }
+.quiz-option:hover { transform:translateX(3px); border-color:#d8ad3e; background:#fffaf0; }
+.quiz-option input { position:absolute; opacity:0; pointer-events:none; }
+.quiz-option-letter { display:grid; place-items:center; flex:0 0 27px; width:27px; height:27px; border-radius:8px; background:#edf3f6; color:#496579; font-size:.78rem; font-weight:900; }
+.quiz-option-text { flex:1; font-size:.9rem; font-weight:600; }
+.quiz-option-check { opacity:0; color:#167447; font-weight:900; }
+.quiz-option:has(input:checked) { border-color:#dcae35; background:#fff6df; box-shadow:0 0 0 2px #e7b94320; }
+.quiz-option:has(input:checked) .quiz-option-letter { background:#e9bd50; color:#15324a; }
+.quiz-option:has(input:checked) .quiz-option-check { opacity:1; }
+.quiz-question.question-complete { border-color:#e6c66e; }
+.quiz-question.is-correct { border-color:#75bd91; background:linear-gradient(145deg,#fff,#f3fbf5); }
+.quiz-question.is-incorrect { border-color:#e7a18f; background:linear-gradient(145deg,#fff,#fff7f3); }
+.quiz-feedback { margin-top:12px; padding:0; color:#506c7e; font-size:.85rem; line-height:1.6; }
+.quiz-feedback:not(:empty) { padding:12px; border-radius:10px; background:#f0f5f7; }
+.quiz-question.is-correct .quiz-feedback { color:#17643a; background:#e9f7ef; }
+.quiz-question.is-incorrect .quiz-feedback { color:#93451f; background:#fff0e9; }
+.quiz-controls { display:flex; flex-wrap:wrap; gap:12px; align-items:center; margin:24px 0 18px; }
+.quiz-controls .btn { min-height:48px; }
+.result { display:none; padding:22px; margin-top:20px; border:1px solid #e7c55f; border-radius:17px; background:radial-gradient(circle at 90% 10%,#fff0c7,transparent 35%),linear-gradient(120deg,#fffdf5,#f4f9fb); box-shadow:0 12px 30px #102f4910; animation:quizCardIn .45s both; }
+.quiz-result-inner { display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:16px; }
+.quiz-result-medal { display:grid; place-items:center; width:58px; height:58px; border-radius:18px; background:#ffedbd; font-size:1.8rem; }
+.quiz-result-kicker { color:#a57412; font-size:.68rem; font-weight:900; letter-spacing:1.5px; }
+.quiz-result-inner h2 { margin:3px 0; color:#0b2e48; font:800 1.8rem 'Playfair Display',Georgia,serif; }
+.quiz-result-inner p { margin:3px 0 7px; color:#63798a; font-size:.85rem; }
+.quiz-result-inner strong { color:#24516a; font-size:.9rem; }
+.quiz-result-percent { color:#b07e14; font-size:clamp(1.8rem,4vw,2.8rem); font-weight:900; }
+.quiz-controls .btn-dark { background:linear-gradient(110deg,#092c47,#17607a); box-shadow:0 7px 17px #0a344a25; }
+.quiz-controls .btn-dark:hover { box-shadow:0 10px 24px #0a344a38; }
+@keyframes quizCardIn { from {opacity:0;transform:translateY(14px)} to {opacity:1;transform:translateY(0)} }
+@keyframes quizEmblemFloat { 50% {transform:translateY(-6px) rotate(4deg)} }
+
+/* CONSISTENT VISUAL MOTION AND BACKGROUNDS ACROSS ALL PAGES */
+body { background:linear-gradient(180deg,#f4f8fa 0%,#fffdf7 42%,#f2f7f9 100%); }
+body:before { content:""; position:fixed; inset:0; z-index:-1; pointer-events:none; opacity:.22; background-image:radial-gradient(circle at 12% 18%,#e8c45b 0 1px,transparent 2px),radial-gradient(circle at 84% 32%,#8fb6c5 0 1px,transparent 2px),linear-gradient(135deg,transparent 49.7%,#d9e6e9 50%,transparent 50.3%); background-size:120px 120px,170px 170px,100% 100%; }
+.page-banner { position:relative; isolation:isolate; overflow:hidden; background:radial-gradient(circle at 85% 12%,#24657a 0,transparent 30%),linear-gradient(120deg,#082943,#0d4962 65%,#145a69) !important; }
+.page-banner:before { content:""; position:absolute; z-index:-1; width:340px; height:340px; right:-100px; top:-180px; border:1px solid #ffdf8340; border-radius:50%; box-shadow:0 0 0 28px #ffdf8310,0 0 0 58px #ffdf8309; animation:bannerOrbit 24s linear infinite; }
+.page-banner:after { content:"01 10 11 00"; position:absolute; z-index:-1; right:4%; bottom:-18px; color:#ffffff0c; font-size:clamp(2rem,6vw,5rem); font-weight:900; letter-spacing:8px; animation:bannerDrift 8s ease-in-out infinite; }
+.content-card,.topic-card,.video-card,.resource-card,.history-stat,.history-entry,.ppt-resource-card,.reading-sheet { animation:softPageEnter .55s both; }
+.content-card { box-shadow:0 16px 42px #102f4910; }
+.site-header { backdrop-filter:blur(12px); }
+.site-header nav a { transition:transform .22s ease,background .22s ease,color .22s ease; }
+.site-header nav a:hover { transform:translateY(-2px); }
+.btn { transition:transform .22s ease,box-shadow .22s ease,filter .22s ease; }
+.btn:hover { filter:brightness(1.04); }
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible { outline:3px solid #e6b43d; outline-offset:3px; }
+@keyframes softPageEnter { from {opacity:0;transform:translateY(13px)} to {opacity:1;transform:translateY(0)} }
+@keyframes bannerOrbit { to {transform:rotate(360deg)} }
+@keyframes bannerDrift { 0%,100% {transform:translate3d(0,0,0)} 50% {transform:translate3d(-18px,-8px,0)} }
+@media(max-width:760px) { .quiz-question-grid{grid-template-columns:1fr}.quiz-progress-wrap{top:70px}.quiz-result-inner{grid-template-columns:auto 1fr}.quiz-result-percent{grid-column:2}.quiz-intro{grid-template-columns:auto 1fr}.quiz-perks{grid-column:1/-1} }
+@media(prefers-reduced-motion:reduce) { *,*:before,*:after {scroll-behavior:auto !important;animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important} }
+
+
+/* PROGRESSIVE QUIZ LEVELS */
+.quiz-level-selector { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; margin:22px 0; }
+.quiz-level-button { position:relative; display:grid; grid-template-columns:auto 1fr; align-items:center; gap:3px 12px; min-height:92px; padding:14px 16px; text-align:left; border:1px solid #dce6ec; border-radius:15px; background:linear-gradient(145deg,#fff,#f6f9fa); color:#15354d; cursor:pointer; transition:transform .22s,border-color .22s,box-shadow .22s,background .22s; }
+.quiz-level-button>span { grid-row:span 3; display:grid; place-items:center; width:38px; height:38px; border-radius:12px; background:#edf3f6; color:#476276; font-weight:900; }
+.quiz-level-button strong { font-size:.95rem; }
+.quiz-level-button small { color:#708494; font-size:.73rem; }
+.quiz-level-button em { color:#9b751f; font-size:.68rem; font-style:normal; }
+.quiz-level-button:hover:not(:disabled) { transform:translateY(-3px); border-color:#e4b943; box-shadow:0 10px 22px #102f4910; }
+.quiz-level-button.is-active { border:2px solid #e4b943; background:linear-gradient(135deg,#fff8e5,#fff); box-shadow:0 8px 22px #d6a72a20; }
+.quiz-level-button.is-active>span { background:#eac45e; color:#12334a; }
+.quiz-level-button.is-locked { opacity:.65; cursor:not-allowed; background:linear-gradient(145deg,#f0f3f5,#e9eef1); }
+.quiz-level-button[disabled] { pointer-events:none; }
+.quiz-level-button:not(.is-locked):not(.is-active) em { color:#278253; }
+.quiz-progression-action { display:flex; align-items:center; flex-wrap:wrap; gap:12px; margin-top:18px; }
+.quiz-level-complete { margin:0; color:#17643a; font-weight:800; }
+.quiz-level-encourage { margin:0; color:#8a5a18; font-weight:700; }
+.quiz-question[hidden] { display:none !important; }
+@media(max-width:720px) { .quiz-level-selector{grid-template-columns:1fr}.quiz-level-button{min-height:75px}.quiz-progress-wrap{top:66px} }
+
+/* BHUTANESE-INSPIRED BACKGROUNDS FOR VIDEO, LEARNING, QUIZ AND HISTORY PAGES */
+:root {
+  --bhutan-saffron: #e5ad32;
+  --bhutan-maroon: #7b2638;
+  --bhutan-deep-blue: #082943;
+  --bhutan-cream: #fff9ed;
+}
+
+/* Give the learning areas a warm parchment base with subtle Bhutanese ornament. */
+#app:has(.page-banner) {
+  position: relative;
+  isolation: isolate;
+  background:
+    radial-gradient(ellipse at 8% 18%, rgba(230,180,61,.13), transparent 26%),
+    radial-gradient(ellipse at 92% 65%, rgba(123,38,56,.07), transparent 25%),
+    linear-gradient(180deg, #fffaf0 0%, #f5f8f7 48%, #fff8e9 100%);
+}
+
+#app:has(.page-banner)::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  pointer-events: none;
+  opacity: .10;
+  background-image: url('assets/decorative-frame.jpg');
+  background-position: center 170px;
+  background-size: min(100%, 1500px) auto;
+  background-repeat: repeat-y;
+}
+
+/* Ornamental divider inspired by Bhutanese woven and architectural patterns. */
+.page-banner {
+  border-bottom: 5px solid transparent;
+  border-image: linear-gradient(90deg, #7b2638 0 12%, #e5ad32 12% 88%, #7b2638 88%) 1;
+  box-shadow: 0 9px 26px rgba(8,41,67,.12);
+}
+.page-banner .eyebrow { color: #ffdf83; }
+.page-banner h1 { text-shadow: 0 3px 14px rgba(0,0,0,.18); }
+
+/* Decorative frames behind the content, while keeping text panels readable. */
+#app:has(.video-player) .section,
+#app:has(.reading-sheet) .section,
+#app:has(.quiz-intro) .section,
+#app:has(.history-section) .history-section,
+#app:has(.history-section) .section {
+  position: relative;
+  isolation: isolate;
+}
+
+#app:has(.video-player) .section::before,
+#app:has(.reading-sheet) .section::before,
+#app:has(.quiz-intro) .section::before,
+#app:has(.history-section) .history-section::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 16px -22px;
+  border: 1px solid rgba(190,139,39,.24);
+  border-radius: 24px;
+  background:
+    linear-gradient(rgba(255,250,239,.88), rgba(255,250,239,.88)),
+    url('assets/decorative-frame.jpg') center/100% 100% no-repeat;
+  box-shadow: 0 14px 38px rgba(8,41,67,.06);
+}
+
+/* Gold-and-maroon corner flourishes on learning cards. */
+.content-card,
+.history-stat,
+.history-entry,
+.quiz-question,
+.quiz-intro,
+.quiz-learning-guide,
+.quiz-progress-wrap {
+  position: relative;
+}
+.content-card::before,
+.history-stat::before,
+.history-entry::before {
+  content: "✥";
+  position: absolute;
+  top: 9px;
+  right: 13px;
+  color: rgba(180,128,28,.48);
+  font-size: 1rem;
+  pointer-events: none;
+}
+
+.history-section {
+  padding: 44px clamp(18px, 3vw, 34px) !important;
+  margin-top: 24px !important;
+  margin-bottom: 36px !important;
+  border: 1px solid rgba(190,139,39,.28);
+  border-radius: 24px;
+  background: linear-gradient(135deg, rgba(255,252,244,.82), rgba(242,247,248,.9));
+}
+.history-banner {
+  background:
+    linear-gradient(rgba(5,35,56,.78),rgba(5,35,56,.84)),
+    url('assets/decorative-frame.jpg') center/cover !important;
+}
+.history-stat { border-left: 3px solid var(--bhutan-maroon); }
+.history-entry { border-left: 3px solid var(--bhutan-saffron); }
+
+/* Subtle patterned accents on the quiz level controls and video player frame. */
+.quiz-level-button,
+.video-player,
+.video-frame,
+.genially-frame {
+  border: 2px solid rgba(190,139,39,.42);
+  box-shadow: 0 10px 26px rgba(8,41,67,.10);
+}
+.video-player,
+.video-frame { background-color: var(--bhutan-deep-blue); }
+.quiz-level-button.is-active { border-color: var(--bhutan-saffron); }
+.quiz-level-button.is-locked { border-style: dashed; }
+
+@media (max-width: 700px) {
+  #app:has(.page-banner)::before { background-size: auto 520px; opacity: .07; }
+  #app:has(.video-player) .section::before,
+  #app:has(.reading-sheet) .section::before,
+  #app:has(.quiz-intro) .section::before,
+  #app:has(.history-section) .history-section::before { inset: 10px -5px; }
+  .history-section { padding: 26px 14px !important; }
+}
+
+
+
+/* =========================================================
+   VERSION 11 — BHUTANESE DIGITAL LEARNING DASHBOARD
+   Visual direction based on the supplied reference image:
+   deep Himalayan navy, saffron gold, maroon details,
+   luminous learning cards and subtle Bhutanese ornament.
+   ========================================================= */
+:root {
+  --dash-navy: #061d38;
+  --dash-blue: #0b3158;
+  --dash-blue-2: #12466d;
+  --dash-gold: #ffc83d;
+  --dash-gold-2: #f2a900;
+  --dash-cream: #fff5dc;
+  --dash-maroon: #7c2037;
+  --dash-text: #f4f7ff;
+  --dash-muted: #c2d2e5;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  color: var(--dash-text);
+  background:
+    radial-gradient(ellipse at 12% 12%, rgba(18,102,151,.34), transparent 34%),
+    radial-gradient(ellipse at 88% 72%, rgba(14,83,122,.25), transparent 35%),
+    linear-gradient(180deg, #061a33 0%, #092c50 48%, #061d38 100%);
+  background-attachment: fixed;
+}
+body::before {
+  opacity: .16;
+  background-image:
+    url('assets/decorative-frame.jpg'),
+    radial-gradient(circle at 15% 20%, rgba(255,207,83,.5) 0 1px, transparent 2px),
+    radial-gradient(circle at 82% 62%, rgba(100,204,238,.45) 0 1px, transparent 2px);
+  background-size: 100% auto, 130px 130px, 170px 170px;
+  background-position: center top, 0 0, 50px 70px;
+  background-repeat: repeat-y, repeat, repeat;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+/* Navigation: gold active tab on a deep-blue Bhutanese header. */
+.site-header {
+  background: linear-gradient(100deg, #04172e 0%, #08294b 52%, #04172e 100%);
+  border-bottom: 3px solid var(--dash-gold);
+  box-shadow: 0 8px 28px rgba(0,0,0,.32);
+}
+.site-header::before,
+.site-header::after {
+  content: "❖ ✦ ❖";
+  position: absolute;
+  top: 8px;
+  color: rgba(255,205,72,.72);
+  font-size: 1.25rem;
+  letter-spacing: 5px;
+  pointer-events: none;
+}
+.site-header::before { left: 14px; }
+.site-header::after { right: 14px; }
+.site-header nav a { color: #f6f2e8; }
+.site-header nav a:hover,
+.site-header nav a.active {
+  color: #102c48;
+  background: linear-gradient(135deg, #ffe27b, #f6b51d);
+  box-shadow: 0 4px 14px rgba(255,195,48,.25);
+}
+.brand { color: #fff !important; }
+.brand span { color: #fff; }
+.menu-toggle { color: #ffdb73; border-color: rgba(255,219,115,.45); }
+
+/* Main content backdrop and ornamental section framing. */
+#app {
+  position: relative;
+  isolation: isolate;
+  background:
+    linear-gradient(180deg, rgba(4,25,49,.22), rgba(4,25,49,.10)),
+    radial-gradient(ellipse at 50% 0%, rgba(24,102,145,.18), transparent 58%);
+}
+#app:has(.page-banner)::before {
+  opacity: .055;
+  background-image: url('assets/decorative-frame.jpg');
+  background-size: min(100%, 1450px) auto;
+  background-position: center top;
+  mix-blend-mode: screen;
+}
+.page-banner {
+  width: min(1450px, calc(100% - 44px));
+  margin: 26px auto 0;
+  padding: clamp(34px,5vw,66px) clamp(22px,5vw,64px);
+  border: 1px solid rgba(255,207,83,.48);
+  border-bottom: 4px solid var(--dash-gold);
+  border-radius: 24px;
+  background:
+    linear-gradient(90deg, rgba(4,27,53,.94), rgba(8,55,91,.88)),
+    url('assets/decorative-frame.jpg') center/cover !important;
+  box-shadow: 0 18px 48px rgba(0,0,0,.26), inset 0 0 0 1px rgba(255,255,255,.04);
+  text-align: center;
+}
+.page-banner .eyebrow {
+  color: #ffd66b !important;
+  letter-spacing: 2.5px;
+  font-weight: 900;
+}
+.page-banner h1 {
+  color: #ffcf48 !important;
+  text-shadow: 0 4px 18px rgba(0,0,0,.4);
+}
+.page-banner p { color: #e1edf8 !important; }
+.page-banner::after {
+  content: "༄  ❖  ༄";
+  display: block;
+  margin-top: 15px;
+  color: rgba(255,211,103,.68);
+  letter-spacing: 9px;
+  font-size: 1rem;
+}
+
+/* Headings and section rhythm. */
+.section { padding-top: 48px; padding-bottom: 52px; }
+.section-heading h2,
+.history-heading h2 {
+  color: #fff2cb !important;
+  text-shadow: 0 2px 12px rgba(0,0,0,.28);
+}
+.section-heading p { color: #c4d5e6 !important; }
+.section-heading h2::after {
+  background: linear-gradient(90deg, #f2a900, #ffe58b, #f2a900);
+  height: 4px;
+  width: 92px;
+}
+.eyebrow { color: #ffd66b !important; }
+
+/* Homepage hero: keep its two-column layout, but make it a luminous dashboard. */
+.welcome-redesign {
+  width: min(1450px, calc(100% - 44px));
+  padding-top: 58px;
+  padding-bottom: 48px;
+  gap: clamp(22px,4vw,54px);
+}
+.welcome-copy h2 {
+  color: #fff4d5 !important;
+  text-shadow: 0 4px 20px rgba(0,0,0,.3);
+}
+.welcome-copy p { color: #d1dfed !important; }
+.welcome-mini-stats span {
+  color: #eaf2fb;
+  border: 1px solid rgba(255,208,87,.48);
+  background: linear-gradient(145deg, rgba(15,64,101,.94), rgba(7,39,70,.96));
+  box-shadow: 0 8px 20px rgba(0,0,0,.16);
+}
+.welcome-mini-stats strong { color: #ffd04b; }
+.welcome-video-redesign {
+  border: 1px solid rgba(255,208,87,.55);
+  border-top: 5px solid var(--dash-gold);
+  background: linear-gradient(145deg, #fffdf7, #eaf4fb);
+  box-shadow: 0 18px 42px rgba(0,0,0,.28);
+}
+.welcome-video-redesign h2 { color: #0a2e4d !important; }
+.welcome-video-redesign p { color: #59738a !important; }
+.welcome-video-redesign .eyebrow { color: #a77512 !important; }
+
+/* Topic tiles become bright, colourful learning portals like the reference. */
+.topic-grid { gap: 18px; }
+.topic-card {
+  border: 1px solid rgba(255,255,255,.65);
+  border-radius: 22px;
+  color: #082746;
+  box-shadow: 0 14px 30px rgba(0,0,0,.25);
+  overflow: hidden;
+}
+.topic-card h3 { color: #082746 !important; }
+.topic-card p { color: #294b65 !important; }
+.topic-card-binary {
+  background: linear-gradient(145deg, #d5f7ff 0%, #8ce4ff 58%, #2997ec 100%);
+  border-top: 5px solid #20c9ef;
+}
+.topic-card-decimal {
+  background: linear-gradient(145deg, #fff3d1 0%, #ffdc83 58%, #f6a52c 100%);
+  border-top: 5px solid #ffbd39;
+}
+.topic-card-octal {
+  background: linear-gradient(145deg, #f2e2ff 0%, #d2a9ff 58%, #9464dc 100%);
+  border-top: 5px solid #bd8cff;
+}
+.topic-card-hexadecimal {
+  background: linear-gradient(145deg, #d7fff1 0%, #8cebd0 58%, #20b99b 100%);
+  border-top: 5px solid #32dfbd;
+}
+.topic-card-symbol {
+  color: #ffdc69;
+  border: 2px solid rgba(255,255,255,.58);
+  background: linear-gradient(145deg,#07335a,#12658a);
+  box-shadow: 0 8px 18px rgba(3,34,62,.28);
+}
+.topic-base {
+  background: rgba(255,255,255,.72) !important;
+  color: #163d58 !important;
+  border: 1px solid rgba(255,255,255,.9);
+}
+.topic-card-actions .btn-dark,
+.btn-dark {
+  color: #102d48 !important;
+  background: linear-gradient(135deg,#ffe17a,#f6b51c) !important;
+  border: 1px solid #e6a719 !important;
+  box-shadow: 0 6px 16px rgba(5,33,58,.2);
+}
+.topic-card-actions .btn-outline-dark,
+.btn-outline-dark {
+  color: #123957 !important;
+  border-color: rgba(13,57,91,.48) !important;
+  background: rgba(255,255,255,.56) !important;
+}
+
+/* Every content surface: rich navy glass panels with clear white text. */
+.content-card,
+.resource-card,
+.ppt-resource-card,
+.reading-sheet,
+.quiz-learning-guide,
+.general-quiz {
+  color: #edf5ff;
+  border: 1px solid rgba(255,211,105,.34);
+  border-top: 3px solid rgba(255,202,65,.88);
+  border-radius: 20px;
+  background:
+    linear-gradient(145deg, rgba(16,62,99,.97), rgba(6,35,66,.97));
+  box-shadow: 0 16px 36px rgba(0,0,0,.23), inset 0 1px 0 rgba(255,255,255,.06);
+}
+.content-card h2,
+.content-card h3,
+.resource-card h2,
+.reading-sheet h2,
+.reading-sheet h3 { color: #ffe6a0 !important; }
+.content-card p,
+.content-card li,
+.resource-card p,
+.reading-sheet p,
+.reading-sheet li { color: #d6e4f2; }
+.content-card a,
+.reading-sheet a { color: #ffda70; }
+.reading-sheet {
+  background:
+    linear-gradient(145deg, rgba(11,53,87,.97), rgba(5,31,59,.98)),
+    url('assets/decorative-frame.jpg') center/cover;
+}
+.reading-ribbon {
+  color: #092b49 !important;
+  background: linear-gradient(90deg,#ffdb70,#f2ae22) !important;
+  border-radius: 8px;
+}
+.reading-facts > div {
+  border: 1px solid rgba(255,213,111,.32);
+  background: rgba(255,255,255,.06);
+  border-radius: 12px;
+}
+.reading-facts small { color: #ffdc7c !important; }
+.reading-facts strong { color: #fff !important; }
+
+/* Video page: framed player and warm gold controls. */
+.video-player,
+.video-frame,
+.genially-frame {
+  border: 3px solid #e9b632 !important;
+  border-radius: 18px !important;
+  background: #03182d !important;
+  box-shadow: 0 16px 34px rgba(0,0,0,.32), 0 0 0 5px rgba(255,210,91,.10);
+}
+.video-card,
+.video-resource,
+.video-lesson-card {
+  color: #edf5ff;
+  border: 1px solid rgba(255,210,91,.35);
+  border-radius: 18px;
+  background: linear-gradient(145deg,#103f68,#082846);
+  box-shadow: 0 12px 28px rgba(0,0,0,.22);
+}
+
+/* Quiz: high contrast question cards, gold level selectors and feedback. */
+.quiz-intro {
+  border: 1px solid rgba(255,216,112,.68);
+  background:
+    linear-gradient(120deg, rgba(5,32,60,.98), rgba(14,76,111,.96)),
+    url('assets/decorative-frame.jpg') center/cover;
+  box-shadow: 0 16px 38px rgba(0,0,0,.28);
+}
+.quiz-intro h2 { color: #ffe08a !important; }
+.quiz-intro p { color: #e0ebf6 !important; }
+.quiz-level-button {
+  color: #f5f8ff;
+  border: 1px solid rgba(255,210,90,.42);
+  background: linear-gradient(145deg,#12456e,#082c4e);
+  box-shadow: 0 9px 22px rgba(0,0,0,.2);
+}
+.quiz-level-button strong { color: #fff1c6; }
+.quiz-level-button small { color: #c3d6e8; }
+.quiz-level-button em { color: #ffda70; }
+.quiz-level-button > span {
+  color: #102f4c;
+  background: linear-gradient(135deg,#ffe17b,#f2ad1d);
+}
+.quiz-level-button.is-active {
+  border: 2px solid #ffd04b;
+  background: linear-gradient(145deg,#1b5c83,#0b365b);
+  box-shadow: 0 0 0 3px rgba(255,203,63,.12), 0 12px 25px rgba(0,0,0,.25);
+}
+.quiz-level-button.is-active > span { background: #ffda68; }
+.quiz-level-button.is-locked {
+  color: #d2deeb;
+  background: linear-gradient(145deg,#344e66,#263e56);
+}
+.quiz-progress-wrap {
+  color: #fff1c6;
+  border: 1px solid rgba(255,210,90,.35);
+  background: rgba(5,32,60,.92);
+}
+.quiz-question {
+  color: #eaf3fc;
+  border-bottom-color: rgba(255,255,255,.13);
+}
+.quiz-question > p { color: #fff0c5 !important; }
+.quiz-option {
+  color: #173b58;
+  background: #f6fbff !important;
+  border: 1px solid #b9d4e6;
+}
+.quiz-option:hover { background: #e6f5ff !important; }
+.quiz-option:has(input:checked) {
+  border-color: #f0b72c !important;
+  background: #fff2c9 !important;
+}
+.quiz-feedback { color: #d9e8f5; }
+.quiz-question.is-correct .quiz-feedback {
+  color: #d8ffeb;
+  background: rgba(20,123,77,.25);
+  border: 1px solid rgba(91,224,156,.3);
+  border-radius: 10px;
+  padding: 10px;
+}
+.quiz-question.is-incorrect .quiz-feedback {
+  color: #ffe0d7;
+  background: rgba(156,62,48,.25);
+  border: 1px solid rgba(255,150,120,.28);
+  border-radius: 10px;
+  padding: 10px;
+}
+.result {
+  color: #0a2c49;
+  border: 2px solid #e9b632;
+  background: linear-gradient(135deg,#fff8e4,#e9f7ff);
+}
+.result h2, .result p, .result strong { color: #0a2c49 !important; }
+
+/* History: progress dashboard cards and activity timeline. */
+.history-section {
+  border: 1px solid rgba(255,211,105,.38) !important;
+  background:
+    linear-gradient(145deg, rgba(13,58,94,.96), rgba(5,32,60,.97)),
+    url('assets/decorative-frame.jpg') center/cover !important;
+  box-shadow: 0 16px 36px rgba(0,0,0,.22);
+}
+.history-heading h2 { color: #ffebba !important; }
+.history-stat {
+  color: #f5f8ff;
+  border: 1px solid rgba(255,215,119,.38);
+  border-top: 4px solid #f3bb35;
+  background: linear-gradient(145deg,#164b73,#092e50);
+  box-shadow: 0 12px 28px rgba(0,0,0,.2);
+}
+.history-stat span { color: #ffdc78 !important; }
+.history-stat strong { color: #fff !important; }
+.history-stat small { color: #c7d9e8 !important; }
+.history-entry {
+  color: #edf5ff;
+  border: 1px solid rgba(255,214,116,.24);
+  border-left: 4px solid #eab532;
+  background: linear-gradient(100deg,#12446d,#0a3155);
+}
+.history-entry strong { color: #fff0c7 !important; }
+.history-entry p { color: #d4e4f2 !important; }
+.history-entry small { color: #a9c2d7 !important; }
+.history-entry-tag { color: #ffda70 !important; }
+.history-empty {
+  border: 1px dashed rgba(255,218,112,.6);
+  background: rgba(255,255,255,.06);
+}
+.history-empty h3 { color: #ffe6a0 !important; }
+.history-empty p, .history-note { color: #c9d9e8 !important; }
+
+/* Breadcrumbs, form controls, tables and footer. */
+.breadcrumb { color: #c9d9e8; }
+.breadcrumb button { color: #ffdc79; }
+input, select, textarea {
+  border-color: rgba(255,205,82,.52) !important;
+}
+.site-footer {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(100deg,#03162c,#0a3155 50%,#03162c);
+  border-top: 4px solid #eeb52f;
+}
+.site-footer::before {
+  content: "༄  ❖  ༄  ❖  ༄";
+  display: block;
+  color: rgba(255,211,103,.65);
+  letter-spacing: 12px;
+  margin-bottom: 10px;
+}
+.site-footer p strong { color: #ffe49a; }
+.back-to-top {
+  color: #082746 !important;
+  background: linear-gradient(135deg,#ffe27b,#f3b326) !important;
+  box-shadow: 0 8px 20px rgba(0,0,0,.28);
+}
+
+/* Keep text and controls readable on phones and tablets. */
+@media (max-width: 760px) {
+  .site-header::before, .site-header::after { display: none; }
+  .welcome-redesign { width: min(100% - 28px, 680px); }
+  .page-banner { width: calc(100% - 24px); border-radius: 17px; }
+  .section { width: calc(100% - 28px); }
+  .topic-grid { grid-template-columns: 1fr; }
+  .history-stats { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  body::before { background-attachment: scroll; }
+}
+
+
+
+/* =========================================================
+   VERSION 11.1 — READING MATERIAL CONTRAST FIX
+   Ensures all learning-note text is readable on its surface.
+   ========================================================= */
+
+/* Learning objectives: light cream surface must use dark text. */
+.reading-sheet .notes-intro {
+  background: linear-gradient(135deg, #fff7df 0%, #fff0c5 100%) !important;
+  border-left: 5px solid #f3b72f !important;
+  color: #17334b !important;
+}
+.reading-sheet .notes-intro h3,
+.reading-sheet .notes-intro p {
+  color: #17334b !important;
+}
+
+/* Main reading text: bright, high-contrast text on navy. */
+.reading-sheet .reading-lead,
+.reading-sheet .detailed-note-section p,
+.reading-sheet .detailed-note-section li,
+.reading-sheet .detailed-note-section > div,
+.reading-sheet .detailed-note-section > div > p {
+  color: #f0f6fc !important;
+}
+.reading-sheet .detailed-note-section h3 {
+  color: #ffdc7b !important;
+}
+.reading-sheet .detailed-note-section {
+  border-bottom: 1px solid rgba(220,235,248,.35) !important;
+}
+
+/* Place-value tables: dark ink on pale cells, white on navy headers. */
+.reading-sheet .place-value-table {
+  border-radius: 12px;
+  overflow-x: auto;
+  box-shadow: 0 8px 20px rgba(0,0,0,.18);
+}
+.reading-sheet .place-value-table table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+.reading-sheet .place-value-table th {
+  background: #10334e !important;
+  color: #ffffff !important;
+  font-weight: 800;
+}
+.reading-sheet .place-value-table td {
+  background: #fff8e8 !important;
+  color: #17334b !important;
+  font-weight: 700;
+}
+.reading-sheet .place-value-table tr:nth-child(even) td {
+  background: #eaf3f8 !important;
+  color: #17334b !important;
+}
+.reading-sheet .place-value-table tr:first-child th,
+.reading-sheet .place-value-table tr:first-child td {
+  background: #10334e !important;
+  color: #ffffff !important;
+}
+.reading-sheet .place-value-table tr th:first-child {
+  background: #123c5a !important;
+  color: #ffffff !important;
+}
+
+/* Worked examples and reminders use cream surfaces with dark readable ink. */
+.reading-sheet .worked-example,
+.reading-sheet .example-box {
+  background: linear-gradient(135deg,#fff8e8,#ffefc8) !important;
+  border: 1px solid #e8c66f !important;
+  border-left: 5px solid #e8b22e !important;
+  color: #17334b !important;
+}
+.reading-sheet .worked-example p,
+.reading-sheet .worked-example li,
+.reading-sheet .worked-example span,
+.reading-sheet .example-box,
+.reading-sheet .example-box p {
+  color: #17334b !important;
+}
+.reading-sheet .worked-example strong,
+.reading-sheet .example-box strong {
+  color: #082c49 !important;
+}
+
+/* Practice questions: dark card, clear summary, cream answer reveal. */
+.reading-sheet .practice-section h2 {
+  color: #ffdf85 !important;
+}
+.reading-sheet .practice-section > p {
+  color: #e0ebf5 !important;
+}
+.reading-sheet .practice-item {
+  background: #103a5c !important;
+  border: 1px solid rgba(255,215,120,.42) !important;
+}
+.reading-sheet .practice-item summary {
+  color: #fff1c8 !important;
+  background: #103a5c !important;
+}
+.reading-sheet .practice-item summary span {
+  color: #ffdb72 !important;
+}
+.reading-sheet .practice-answer {
+  background: #fff7e4 !important;
+  color: #17334b !important;
+  border-top: 1px solid #e8c66f !important;
+}
+.reading-sheet .practice-answer p,
+.reading-sheet .practice-answer strong {
+  color: #17334b !important;
+}
+
+/* Conversion calculator and its labels remain legible within reading notes. */
+.reading-sheet .converter-heading h2,
+.reading-sheet .converter-heading p {
+  color: #f1f6fc !important;
+}
+.reading-sheet .converter-panel label {
+  color: #fff0c5 !important;
+}
+.reading-sheet .converter-panel input,
+.reading-sheet .converter-panel select {
+  color: #17334b !important;
+  background: #fffaf0 !important;
+}
+.reading-sheet .converter-result,
+.reading-sheet .conversion-result {
+  color: #17334b !important;
+  background: #fff4d7 !important;
+}
+.reading-sheet .converter-result *,
+.reading-sheet .conversion-result * {
+  color: #17334b !important;
+}
+
+
+
+/* =========================================================
+   VERSION 11.2 — FULL SITE TEXT CONTRAST PASS
+   Targeted overrides for the exact low-contrast areas shown
+   in the user's screenshots. All text/background pairs are
+   explicitly assigned readable colours.
+   ========================================================= */
+
+/* HOME: use a dark dashboard surface behind the light hero text. */
+.welcome-redesign {
+  position: relative;
+  isolation: isolate;
+  width: min(1450px, calc(100% - 44px));
+  margin: 26px auto 34px !important;
+  padding: clamp(34px,4.5vw,62px) clamp(22px,4vw,54px) !important;
+  border: 1px solid rgba(255,211,105,.55) !important;
+  border-bottom: 4px solid #f3bd3e !important;
+  border-radius: 24px !important;
+  background:
+    linear-gradient(105deg, rgba(4,27,52,.97), rgba(8,54,91,.94) 58%, rgba(5,31,59,.97)),
+    url('assets/decorative-frame.jpg') center/cover !important;
+  box-shadow: 0 18px 45px rgba(0,0,0,.28) !important;
+}
+.welcome-copy h2 {
+  color: #fff1c9 !important;
+  text-shadow: 0 3px 16px rgba(0,0,0,.42) !important;
+}
+.welcome-copy p {
+  color: #e5eef7 !important;
+}
+.welcome-copy .eyebrow,
+.welcome-copy .welcome-eyebrow {
+  color: #ffd66b !important;
+}
+.welcome-mini-stats span {
+  color: #f4f7fb !important;
+  background: #123d61 !important;
+  border-color: rgba(255,210,100,.6) !important;
+}
+.welcome-mini-stats strong { color: #ffd45d !important; }
+.welcome-video-redesign {
+  background: linear-gradient(145deg,#fffdf6,#eef6fb) !important;
+  border: 1px solid #e5c46b !important;
+  border-top: 5px solid #f1bd37 !important;
+}
+.welcome-video-redesign h2 { color: #0b2e4c !important; }
+.welcome-video-redesign p { color: #526d83 !important; }
+
+/* HOME topic section: dark navy canvas so section headings are legible. */
+#app:has(.topic-grid) .section:has(.topic-grid) {
+  width: min(1450px, calc(100% - 44px));
+  margin: 0 auto 38px;
+  padding: clamp(28px,4vw,48px) !important;
+  border: 1px solid rgba(255,211,105,.45);
+  border-radius: 24px;
+  background:
+    linear-gradient(145deg,rgba(5,31,59,.97),rgba(10,57,91,.96)),
+    url('assets/decorative-frame.jpg') center/cover !important;
+  box-shadow: 0 18px 40px rgba(0,0,0,.22);
+}
+#app:has(.topic-grid) .section:has(.topic-grid) .section-heading h2,
+#app:has(.topic-grid) .section:has(.topic-grid) .section-heading h3 {
+  color: #fff0c5 !important;
+}
+#app:has(.topic-grid) .section:has(.topic-grid) .section-heading p {
+  color: #dce8f3 !important;
+}
+#app:has(.topic-grid) .section:has(.topic-grid) .eyebrow {
+  color: #ffd36a !important;
+}
+
+/* LEARNING NOTES: set explicit text colours for all common content elements. */
+.reading-sheet,
+.reading-sheet * {
+  text-shadow: none;
+}
+.reading-sheet > h1,
+.reading-sheet > h2,
+.reading-sheet > h3,
+.reading-sheet .reading-title,
+.reading-sheet .reading-heading,
+.reading-sheet .detailed-note-section h2,
+.reading-sheet .detailed-note-section h3,
+.reading-sheet .detailed-note-section h4 {
+  color: #ffe08a !important;
+}
+.reading-sheet p,
+.reading-sheet li,
+.reading-sheet ol,
+.reading-sheet ul,
+.reading-sheet td,
+.reading-sheet th,
+.reading-sheet label,
+.reading-sheet span:not(.reading-ribbon):not(.reading-number),
+.reading-sheet .detailed-note-section,
+.reading-sheet .detailed-note-section p,
+.reading-sheet .detailed-note-section li {
+  color: #f0f6fc !important;
+}
+.reading-sheet .notes-intro,
+.reading-sheet .notes-intro *,
+.reading-sheet .learning-objectives,
+.reading-sheet .learning-objectives * {
+  color: #18354e !important;
+}
+.reading-sheet .notes-intro,
+.reading-sheet .learning-objectives {
+  background: #fff5dc !important;
+  border-left: 5px solid #f0b832 !important;
+}
+.reading-sheet .place-value-table th,
+.reading-sheet table th {
+  color: #fff !important;
+  background: #10334e !important;
+}
+.reading-sheet .place-value-table td,
+.reading-sheet table td {
+  color: #18354e !important;
+  background: #fff8e9 !important;
+}
+.reading-sheet .place-value-table tr:nth-child(even) td,
+.reading-sheet table tr:nth-child(even) td {
+  color: #18354e !important;
+  background: #eaf2f7 !important;
+}
+.reading-sheet .worked-example,
+.reading-sheet .worked-example *,
+.reading-sheet .example-box,
+.reading-sheet .example-box * {
+  color: #17354e !important;
+  background-color: transparent;
+}
+.reading-sheet .worked-example,
+.reading-sheet .example-box {
+  background: #fff5dc !important;
+  border: 1px solid #e7c66e !important;
+  border-left: 5px solid #e7b333 !important;
+}
+
+/* CONVERSION PRACTICE: this panel is cream, so all its copy must be dark. */
+.reading-sheet .conversion-practice {
+  background: linear-gradient(145deg,#fffdf7,#f3f8fb) !important;
+  border: 1px solid #e3c879 !important;
+  color: #18354e !important;
+}
+.reading-sheet .conversion-practice-title .eyebrow,
+.reading-sheet .conversion-practice .eyebrow {
+  color: #9b6909 !important;
+}
+.reading-sheet .conversion-practice-title h2,
+.reading-sheet .conversion-practice h2 {
+  color: #12334e !important;
+}
+.reading-sheet .conversion-practice-title p,
+.reading-sheet .conversion-practice p {
+  color: #425d73 !important;
+}
+.reading-sheet .conversion-practice-card {
+  background: #ffffff !important;
+  border: 1px solid #d5e1e9 !important;
+}
+.reading-sheet .conversion-practice-card h3 {
+  color: #17364f !important;
+}
+.reading-sheet .conversion-question-label {
+  color: #95630b !important;
+}
+.reading-sheet .conversion-answer-row input {
+  color: #17364f !important;
+  background: #fff !important;
+}
+.reading-sheet .conversion-answer-row .btn {
+  color: #102f49 !important;
+  background: linear-gradient(135deg,#ffdc75,#efb32b) !important;
+}
+.reading-sheet .conversion-feedback {
+  color: #24455e !important;
+}
+
+/* QUIZZES: white question cards require navy question text. */
+.quiz-question,
+.quiz-question-grid .quiz-question {
+  background: linear-gradient(145deg,#fff,#f7fbfd) !important;
+  border: 1px solid #d8e4ec !important;
+}
+.quiz-question > p,
+.quiz-question p,
+.quiz-question h3,
+.quiz-question h4,
+.quiz-question .question-text {
+  color: #12334e !important;
+}
+.quiz-question .question-number,
+.quiz-question .quiz-question-label,
+.quiz-question small {
+  color: #8e610c !important;
+}
+.quiz-option,
+.quiz-option span,
+.quiz-option label {
+  color: #173b58 !important;
+}
+.quiz-progress-wrap {
+  background: #fff8e8 !important;
+  border: 1px solid #e5c36a !important;
+}
+.quiz-progress-top,
+.quiz-progress-top span {
+  color: #17364f !important;
+}
+.quiz-progress-track { background: #dce7ee !important; }
+.quiz-feedback { color: #24465f !important; }
+.quiz-intro h2 { color: #ffe08a !important; }
+.quiz-intro p { color: #edf4fb !important; }
+
+/* PRACTICE / ANSWER REVEALS: no pale text on white cards. */
+.reading-sheet details,
+.reading-sheet summary {
+  color: #fff0c7 !important;
+}
+.reading-sheet details[open] > div,
+.reading-sheet .practice-answer,
+.reading-sheet .practice-answer p,
+.reading-sheet .practice-answer li {
+  color: #17354e !important;
+}
+.reading-sheet .practice-answer {
+  background: #fff5dc !important;
+}
+
+/* HISTORY and VIDEO headings: clear copy on dark panels. */
+.history-section h1,
+.history-section h2,
+.history-section h3 { color: #ffe6a0 !important; }
+.history-section p,
+.history-section li { color: #e2edf6 !important; }
+.video-card h2,
+.video-card h3,
+.video-resource h2,
+.video-resource h3 { color: #ffe6a0 !important; }
+.video-card p,
+.video-resource p { color: #e4edf6 !important; }
+
+/* Ensure keyboard focus remains obvious. */
+a:focus-visible, button:focus-visible, input:focus-visible,
+select:focus-visible, textarea:focus-visible {
+  outline: 3px solid #ffd45d !important;
+  outline-offset: 3px;
+}
+
+
+
+/* =========================================================
+   VERSION 11.3 — FIX THE SPECIFIC REMAINING PALE TEXT
+   Explicitly style worked-example text and force homepage
+   panels to use the dark dashboard surfaces.
+   ========================================================= */
+
+/* Worked examples in learning notes: dark text on cream cards. */
+#app .reading-sheet .worked-example,
+#app .reading-sheet .worked-example p,
+#app .reading-sheet .worked-example span,
+#app .reading-sheet .worked-example li,
+#app .reading-sheet .worked-example strong,
+#app .reading-sheet .example-box,
+#app .reading-sheet .example-box p,
+#app .reading-sheet .example-box span,
+#app .reading-sheet .example-box li,
+#app .reading-sheet .example-box strong {
+  color: #17354e !important;
+}
+#app .reading-sheet .worked-example,
+#app .reading-sheet .example-box {
+  background: #fff4d8 !important;
+  border: 1px solid #e8c36a !important;
+  border-left: 5px solid #e7b32e !important;
+}
+#app .reading-sheet .worked-example p,
+#app .reading-sheet .example-box p {
+  background: transparent !important;
+}
+
+/* Learning notes: retain white explanatory text only on the navy reading canvas. */
+#app .reading-sheet > .reading-lead,
+#app .reading-sheet .detailed-note-section p,
+#app .reading-sheet .detailed-note-section li {
+  color: #f3f7fc !important;
+}
+
+/* Home welcome panel: force dark navy regardless of decorative pseudo backgrounds. */
+#app .welcome-redesign,
+#app section.welcome-redesign {
+  background-color: #082b4b !important;
+  background-image:
+    linear-gradient(105deg, #061d38 0%, #0b3a61 58%, #061d38 100%) !important;
+  border: 1px solid #e8bb4a !important;
+  border-bottom: 4px solid #f3bd3e !important;
+  border-radius: 24px !important;
+}
+#app .welcome-redesign .welcome-copy h2 {
+  color: #fff1c9 !important;
+}
+#app .welcome-redesign .welcome-copy p {
+  color: #edf4fb !important;
+}
+#app .welcome-redesign .welcome-copy .eyebrow {
+  color: #ffd66b !important;
+}
+#app .welcome-redesign .welcome-mini-stats span {
+  color: #f5f8fc !important;
+  background: #123d61 !important;
+}
+#app .welcome-redesign .welcome-mini-stats strong {
+  color: #ffd45d !important;
+}
+#app .welcome-redesign .welcome-video-redesign {
+  background: #fffdf6 !important;
+}
+#app .welcome-redesign .welcome-video-redesign h2 {
+  color: #0b2e4c !important;
+}
+#app .welcome-redesign .welcome-video-redesign p {
+  color: #526d83 !important;
+}
+
+/* Home number-system section: dark background behind cream headings. */
+#app .learning-path-section,
+#app section.learning-path-section {
+  background-color: #082b4b !important;
+  background-image: linear-gradient(145deg,#061d38,#0b3a61) !important;
+  border: 1px solid rgba(255,211,105,.5) !important;
+  border-radius: 24px !important;
+}
+#app .learning-path-section .section-heading h2 {
+  color: #fff0c5 !important;
+}
+#app .learning-path-section .section-heading p {
+  color: #e1ebf5 !important;
+}
+#app .learning-path-section .section-heading .eyebrow {
+  color: #ffd36a !important;
+}
+
+/* Ensure the ornamental background never washes out homepage panels. */
+#app .welcome-redesign::before,
+#app .learning-path-section::before {
+  opacity: .08 !important;
+  pointer-events: none !important;
+}
+
+
+
+/* =========================================================
+   VERSION 11.4 — FINAL SITE-WIDE READABILITY OVERRIDES
+   Fixes selector-specificity conflicts in worked examples
+   and gives every homepage section a deliberate contrast.
+   ========================================================= */
+
+/* 1. WORKED EXAMPLES: the paragraph selector inside
+   .detailed-note-section previously overruled the cream-card text. */
+#app .reading-sheet article.detailed-note-section .worked-example,
+#app .reading-sheet article.detailed-note-section .worked-example *,
+#app .reading-sheet article.detailed-note-section .example-box,
+#app .reading-sheet article.detailed-note-section .example-box *,
+#app .reading-sheet > .example-box,
+#app .reading-sheet > .example-box * {
+  color: #17354e !important;
+}
+#app .reading-sheet article.detailed-note-section .worked-example,
+#app .reading-sheet article.detailed-note-section .example-box,
+#app .reading-sheet > .example-box {
+  background: #fff4d8 !important;
+  border: 1px solid #e8c36a !important;
+  border-left: 5px solid #e7b32e !important;
+}
+#app .reading-sheet article.detailed-note-section .worked-example p,
+#app .reading-sheet article.detailed-note-section .worked-example strong,
+#app .reading-sheet article.detailed-note-section .example-box p,
+#app .reading-sheet article.detailed-note-section .example-box strong {
+  background: transparent !important;
+  color: #17354e !important;
+}
+
+/* 2. HOMEPAGE WELCOME: explicitly dark surface, readable copy. */
+#app section.section.welcome-redesign {
+  background: linear-gradient(110deg,#061d38 0%,#0b3a61 58%,#061d38 100%) !important;
+  background-color: #082b4b !important;
+  border: 1px solid #e8bb4a !important;
+  border-bottom: 4px solid #f3bd3e !important;
+}
+#app section.section.welcome-redesign .welcome-copy h2 {
+  color: #fff1c9 !important;
+}
+#app section.section.welcome-redesign .welcome-copy p {
+  color: #edf4fb !important;
+}
+#app section.section.welcome-redesign .welcome-copy .eyebrow {
+  color: #ffd66b !important;
+}
+#app section.section.welcome-redesign .welcome-mini-stats span {
+  color: #f5f8fc !important;
+  background: #123d61 !important;
+}
+#app section.section.welcome-redesign .welcome-mini-stats strong {
+  color: #ffd45d !important;
+}
+#app section.section.welcome-redesign .welcome-video-redesign {
+  background: #fffdf6 !important;
+}
+#app section.section.welcome-redesign .welcome-video-redesign h2 {
+  color: #0b2e4c !important;
+}
+#app section.section.welcome-redesign .welcome-video-redesign p {
+  color: #526d83 !important;
+}
+
+/* 3. NUMBER SYSTEM SECTION: dark canvas, gold/cream section title. */
+#app section.section.learning-path-section {
+  background: linear-gradient(145deg,#061d38,#0b3a61) !important;
+  background-color: #082b4b !important;
+  border: 1px solid rgba(255,211,105,.5) !important;
+  border-radius: 24px !important;
+}
+#app section.section.learning-path-section .section-heading h2 {
+  color: #fff0c5 !important;
+}
+#app section.section.learning-path-section .section-heading p {
+  color: #e1ebf5 !important;
+}
+#app section.section.learning-path-section .section-heading .eyebrow {
+  color: #ffd36a !important;
+}
+
+/* 4. LEARNING TOOLKIT: replace the pale panel behind pale headings. */
+#app section.section.home-tools-section {
+  background: linear-gradient(145deg,#061d38,#0b3a61) !important;
+  background-color: #082b4b !important;
+  border: 1px solid rgba(255,211,105,.5) !important;
+  border-radius: 24px !important;
+  padding: clamp(28px,4vw,48px) !important;
+}
+#app section.section.home-tools-section .section-heading h2 {
+  color: #fff0c5 !important;
+}
+#app section.section.home-tools-section .section-heading p {
+  color: #e1ebf5 !important;
+}
+#app section.section.home-tools-section .section-heading .eyebrow {
+  color: #ffd36a !important;
+}
+#app .home-tool-card {
+  background: #fffdf7 !important;
+  color: #17354e !important;
+  border: 1px solid #d8e4eb !important;
+}
+#app .home-tool-card strong { color: #102f4b !important; }
+#app .home-tool-card small { color: #526d83 !important; }
+#app .home-tool-card .tool-link { color: #95630b !important; }
+
+/* 5. QUICK CHALLENGE: keep its title, prompt and choices high contrast. */
+#app .daily-challenge {
+  background: linear-gradient(115deg,#06243b,#0b4562 55%,#176a79) !important;
+}
+#app .daily-challenge .eyebrow { color: #ffdf83 !important; }
+#app .daily-challenge h2 { color: #ffffff !important; }
+#app .daily-challenge p { color: #e5eff7 !important; }
+#app .challenge-option {
+  color: #ffffff !important;
+  background: rgba(255,255,255,.12) !important;
+  border-color: rgba(255,255,255,.48) !important;
+}
+
+/* 6. General guard: links and secondary copy on dark sections. */
+#app .welcome-redesign .eyebrow,
+#app .learning-path-section .eyebrow,
+#app .home-tools-section .eyebrow { text-shadow: none !important; }
+
+
+
+/* VERSION 11.5 — TOOLKIT TITLE AND WORKED EXAMPLE TEXT */
+#app .home-tools-section .section-heading h2,
+#app section.home-tools-section .section-heading h2,
+#app .home-tools-section h2 {
+  color: #082b49 !important;
+  -webkit-text-fill-color: #082b49 !important;
+  text-shadow: none !important;
+}
+#app .home-tools-section .section-heading p,
+#app section.home-tools-section .section-heading p {
+  color: #294b65 !important;
+  -webkit-text-fill-color: #294b65 !important;
+}
+#app .home-tools-section .section-heading .eyebrow,
+#app section.home-tools-section .section-heading .eyebrow {
+  color: #94630b !important;
+  -webkit-text-fill-color: #94630b !important;
+}
+
+/* Worked example body copy must be dark on the cream example card.
+   This selector intentionally outranks the generic note paragraph rule. */
+#app .reading-sheet .detailed-note-section .worked-example p,
+#app .reading-sheet .detailed-note-section .worked-example span,
+#app .reading-sheet .detailed-note-section .worked-example li,
+#app .reading-sheet .detailed-note-section .worked-example strong,
+#app .reading-sheet .worked-example p,
+#app .reading-sheet .worked-example span,
+#app .reading-sheet .worked-example li,
+#app .reading-sheet .worked-example strong {
+  color: #17354e !important;
+  -webkit-text-fill-color: #17354e !important;
+}
+#app .reading-sheet .detailed-note-section .worked-example,
+#app .reading-sheet .worked-example {
+  background: #fff4d8 !important;
+}
+
+
+/* VERSION 12 — Bhutanese support artwork behind learning, video, quiz and history pages */
+body.learning-background-page {
+  background: #082b49 !important;
+  background-attachment: fixed !important;
+}
+body.learning-background-page::before {
+  content: "" !important;
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: -1 !important;
+  pointer-events: none !important;
+  opacity: 1 !important;
+  background-image:
+    linear-gradient(rgba(5, 31, 54, .48), rgba(5, 31, 54, .62)),
+    url("assets/backgrounds/bhutan-learning-background.jpg") !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
+}
+/* Preserve readable content panels above the photographic background. */
+body.learning-background-page #app {
+  position: relative;
+  isolation: isolate;
+}
+@media (max-width: 700px) {
+  body.learning-background-page::before {
+    background-position: 58% center !important;
+    background-attachment: scroll !important;
+  }
+}
+
+
+
+/* VERSION 13 — Apply the supplied Bhutanese support artwork to About Us too,
+   and correct the low-contrast "Meet the Creators" heading. */
+#app section.section:has(.team-grid) {
+  position: relative;
+  isolation: isolate;
+  background: linear-gradient(145deg, rgba(5,29,52,.94), rgba(8,58,83,.90)) !important;
+  border: 1px solid rgba(255,211,105,.55) !important;
+  border-radius: 24px !important;
+  padding: clamp(28px,4vw,48px) !important;
+  box-shadow: 0 18px 45px rgba(3,20,36,.24) !important;
+}
+#app section.section:has(.team-grid) .section-heading h2 {
+  color: #fff0c5 !important;
+  -webkit-text-fill-color: #fff0c5 !important;
+  text-shadow: 0 2px 12px rgba(0,0,0,.35) !important;
+}
+#app section.section:has(.team-grid) .section-heading p {
+  color: #e7f0f7 !important;
+  -webkit-text-fill-color: #e7f0f7 !important;
+}
+#app section.section:has(.team-grid) .section-heading .eyebrow {
+  color: #ffd36a !important;
+  -webkit-text-fill-color: #ffd36a !important;
+}
+#app section.section:has(.team-grid) .team-card {
+  background: #fffdf7 !important;
+}
+
+/* V14: Use the supplied Bhutanese support illustration INSIDE every page-title banner. */
+.page-banner {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 64px 24px;
+  background-image:
+    linear-gradient(90deg, rgba(3, 25, 43, .76), rgba(4, 34, 55, .62) 48%, rgba(3, 25, 43, .76)),
+    url('assets/support-banner.jpg') !important;
+  background-size: cover !important;
+  background-position: center 48% !important;
+  background-repeat: no-repeat !important;
+  border-bottom: 5px solid #e5ad32;
+  box-shadow: 0 12px 28px rgba(4, 27, 45, .20);
+}
+.page-banner::before {
+  z-index: -1;
+  background: linear-gradient(180deg, rgba(4, 28, 47, .08), rgba(4, 28, 47, .24));
+}
+.page-banner::after {
+  z-index: -1;
+  color: rgba(255, 244, 213, .16);
+  text-shadow: 0 2px 14px rgba(0,0,0,.25);
+}
+.page-banner .eyebrow {
+  color: #ffdf83 !important;
+  text-shadow: 0 2px 8px rgba(0,0,0,.65);
+}
+.page-banner h1 {
+  color: #ffcf4f !important;
+  text-shadow: 0 3px 12px rgba(0,0,0,.78) !important;
+}
+.page-banner p {
+  color: #fff !important;
+  text-shadow: 0 2px 8px rgba(0,0,0,.78);
+}
+@media (max-width: 650px) {
+  .page-banner { min-height: 210px; padding: 48px 18px; background-position: 58% center !important; }
+}
