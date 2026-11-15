@@ -2076,3 +2076,139 @@ body.learning-background-page #app {
 @media (max-width: 650px) {
   .page-banner { min-height: 210px; padding: 48px 18px; background-position: 58% center !important; }
 }
+
+
+/* =========================================================
+   MOBILE RESPONSIVENESS PATCH
+   Layout-only overrides. Intentionally preserves all existing
+   colours, logos, images, backgrounds, typography and desktop styling.
+   ========================================================= */
+@media (max-width: 760px) {
+  html, body { max-width: 100%; overflow-x: hidden; }
+  img, video, iframe, canvas, svg { max-width: 100%; }
+  #app, main, section, article, .section, .content-card,
+  .reading-sheet, .history-section, .converter-lab { min-width: 0; }
+
+  .site-header {
+    width: 100%; min-width: 0; gap: 10px;
+    padding: 9px 14px; flex-wrap: wrap;
+  }
+  .brand { min-width: 0; max-width: calc(100% - 58px); gap: 8px; }
+  .brand span { min-width: 0; overflow-wrap: anywhere; }
+  .brand img { flex: 0 0 40px; width: 40px; height: 40px; }
+  .menu-toggle { flex: 0 0 auto; min-width: 42px; min-height: 40px; }
+  .site-header nav {
+    width: 100%; flex: 1 0 100%; min-width: 0;
+    display: none; flex-direction: column; align-items: stretch;
+    gap: 4px; padding: 8px 0 5px;
+  }
+  .site-header nav.open { display: flex; }
+  .site-header nav a { display: block; width: 100%; padding: 11px 12px; text-align: center; }
+
+  .hero, .hero-redesign {
+    min-height: 0; padding: 48px 16px;
+  }
+  .hero-content, .hero-redesign-content { width: 100%; max-width: 100%; padding: 12px 4px; }
+  .hero h1, .hero-title { font-size: clamp(2rem, 9vw, 3.2rem) !important; line-height: 1.08; overflow-wrap: anywhere; }
+  .hero p { max-width: 100%; font-size: 1rem; }
+  .hero .btn, .hero-redesign .btn { max-width: 100%; white-space: normal; }
+  .hero-actions, .hero-buttons, .topic-card-actions { flex-wrap: wrap; }
+  .hero-orbit { max-width: 42vw; max-height: 42vw; }
+
+  .section, .breadcrumb { width: calc(100% - 28px); max-width: 100%; }
+  .section { padding-top: 34px; padding-bottom: 38px; }
+  .page-banner { width: calc(100% - 24px); max-width: 100%; padding: 36px 16px; }
+  .page-banner h1 { font-size: clamp(1.7rem, 7vw, 2.7rem); overflow-wrap: anywhere; }
+  .page-banner p { max-width: 100%; }
+
+  .intro-layout, .welcome-redesign, .home-welcome-section .intro-layout {
+    width: 100%; max-width: 100%; grid-template-columns: minmax(0, 1fr);
+  }
+  .topic-grid, .feature-grid, .learning-actions,
+  .conversion-practice-list, .quiz-question-grid,
+  .team-grid, .history-stats, .quiz-level-selector {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  .topic-card, .topic-home-card { min-width: 0; min-height: 0; aspect-ratio: auto; }
+  .topic-card-actions .btn { flex: 1 1 130px; }
+  .feature, .action-card, .info-panel, .content-card,
+  .welcome-video-card, .ppt-resource-card { min-width: 0; padding: 18px; }
+  .team-card { min-width: 0; }
+  .team-card img { width: 100%; max-width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; }
+
+  .converter-lab { margin: 24px 0; padding: 18px; border-radius: 18px; }
+  .converter-panel { min-width: 0; padding: 14px; }
+  .converter-controls { grid-template-columns: minmax(0, 1fr); }
+  .converter-controls label, .converter-form > label { min-width: 0; }
+  .converter-controls select, .converter-input-row input,
+  .converter-answer-row input { width: 100%; min-width: 0; max-width: 100%; }
+  .converter-input-row, .conversion-answer-row { min-width: 0; flex-direction: column; }
+  .converter-input-row .btn, .conversion-answer-row .btn,
+  .converter-copy { width: 100%; }
+  .converter-swap { justify-self: center; transform: rotate(90deg); }
+  .converter-swap:hover { transform: rotate(270deg); }
+  .converter-answer { font-size: clamp(1.6rem, 8vw, 2.5rem); overflow-wrap: anywhere; }
+
+  .quiz-intro { grid-template-columns: minmax(0, 1fr); gap: 10px; padding: 20px 16px; }
+  .quiz-emblem { grid-row: auto; }
+  .quiz-perks { grid-column: 1; }
+  .quiz-result-inner { grid-template-columns: auto minmax(0, 1fr); }
+  .quiz-result-percent { grid-column: 2; }
+  .quiz-progress-wrap { top: 6px; }
+  .quiz-controls, .quiz-progression-action { align-items: stretch; }
+  .quiz-controls .btn, .quiz-progression-action .btn { flex: 1 1 100%; width: 100%; }
+
+  .history-heading { align-items: flex-start; flex-direction: column; }
+  .history-entry { min-width: 0; overflow-wrap: anywhere; }
+  .history-entry div { min-width: 0; }
+  .history-entry p { overflow-wrap: anywhere; }
+  .history-stat strong { font-size: clamp(1.8rem, 8vw, 2.5rem); }
+
+  .detailed-note-section { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+  .reading-sheet, .reading-sheet > *, .detailed-note-section > div { min-width: 0; max-width: 100%; }
+  .place-value-table, .reading-sheet table, .content-card table {
+    display: block; width: 100%; max-width: 100%; overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .place-value-table table { min-width: 560px; }
+  pre, code { max-width: 100%; overflow-x: auto; }
+  .back-row { align-items: stretch; }
+  .back-row .btn { flex: 1 1 100%; }
+
+  .ai-chat-toggle { right: 12px; bottom: 12px; }
+  .ai-chat-panel {
+    right: 8px; bottom: 68px;
+    width: calc(100vw - 16px); max-width: 430px;
+    height: min( min(650px, calc(100dvh - 82px)), 650px);
+    max-height: calc(100dvh - 82px);
+  }
+  .ai-chat-header { padding: 12px; }
+  .ai-chat-welcome { padding: 10px 12px; }
+  .ai-suggestions { gap: 6px; padding: 8px; }
+  .ai-suggestions button { max-width: 100%; white-space: normal; }
+  .ai-chat-messages { min-height: 70px; }
+  .ai-chat-form { padding: 8px; }
+
+  .site-footer { padding: 28px 16px; }
+  .back-to-top { right: 12px; bottom: 76px; }
+}
+
+@media (max-width: 420px) {
+  .site-header { padding: 8px 10px; }
+  .brand { font-size: .84rem; }
+  .brand img { width: 36px; height: 36px; flex-basis: 36px; }
+  .hero, .hero-redesign { padding: 38px 12px; }
+  .hero h1, .hero-title { font-size: clamp(1.8rem, 10vw, 2.6rem) !important; }
+  .section, .breadcrumb { width: calc(100% - 22px); }
+  .page-banner { width: calc(100% - 18px); padding: 30px 12px; }
+  .content-card, .info-panel, .welcome-video-card { padding: 14px; }
+  .converter-lab { padding: 14px; }
+  .converter-panel { padding: 11px; }
+  .quiz-question { padding: 15px; }
+  .quiz-option { align-items: flex-start; }
+  .ai-chat-panel { right: 6px; width: calc(100vw - 12px); }
+}
+
+@media (max-height: 520px) and (max-width: 900px) {
+  .ai-chat-panel { height: calc(100dvh - 76px); max-height: calc(100dvh - 76px); }
+}
