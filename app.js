@@ -706,12 +706,30 @@ function render(route) {
   }
 }
 
+// Clear History uses event delegation because the History page is rendered
+// dynamically whenever the user navigates to it.
 document.addEventListener("click", (event) => {
-  if (event.target && event.target.id === "clearHistoryBtn") {
-    if (confirm("Clear your learning history saved on this device?")) {
-      localStorage.removeItem("dnsLearningHistory");
-      render("history");
-    }
+  const target = event.target;
+  const clearButton = target instanceof Element
+    ? target.closest("#clearHistoryBtn")
+    : null;
+
+  if (!clearButton) return;
+
+  event.preventDefault();
+
+  if (!window.confirm("Clear your learning history saved on this device?")) {
+    return;
+  }
+
+  try {
+    // Remove the same localStorage key used by getLearningHistory() and
+    // saveLearningActivity(), then redraw the History page immediately.
+    window.localStorage.removeItem("dnsLearningHistory");
+    render("history");
+  } catch (error) {
+    console.error("Could not clear learning history:", error);
+    window.alert("Your learning history could not be cleared. Please check your browser storage settings and try again.");
   }
 });
 
